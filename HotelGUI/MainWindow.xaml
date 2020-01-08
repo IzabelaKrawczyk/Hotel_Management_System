@@ -1,0 +1,51 @@
+﻿<Window x:Class="HotelGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotelGUI"
+        mc:Ignorable="d"
+        Title="Hotel Management System" Height="566.605" Width="1161.314" ShowInTaskbar="False">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="313*"/>
+            <ColumnDefinition Width="479*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="First name" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last name" HorizontalAlignment="Left" Margin="163,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_firstName" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
+        <TextBox x:Name="textBox_lastName" HorizontalAlignment="Left" Height="23" Margin="163,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
+        <Label Content="Date of birth" HorizontalAlignment="Left" Margin="12,69,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_day" HorizontalAlignment="Left" Height="23" Margin="12,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" UndoLimit="102" AutomationProperties.HelpText="Day"/>
+        <ComboBox x:Name="comboBox_month" HorizontalAlignment="Left" Margin="65,101,0,0" VerticalAlignment="Top" Width="75">
+            <Button Content="January"/>
+            <Button Content="February"/>
+            <Button Content="March"/>
+            <Button Content="April"/>
+            <Button Content="May"/>
+            <Button Content="June"/>
+            <Button Content="July"/>
+            <Button Content="August"/>
+            <Button Content="September"/>
+            <Button Content="October"/>
+            <Button Content="November"/>
+            <Button Content="December"/>
+        </ComboBox>
+        <TextBox x:Name="textBox_year" HorizontalAlignment="Left" Height="23" Margin="145,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Year" SpellCheck.IsEnabled="True"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="50"/>
+        <ComboBox x:Name="comboBox_gender" HorizontalAlignment="Left" Margin="65,128,0,0" VerticalAlignment="Top" Width="120">
+            <Button Content="Male"/>
+            <Button Content="Female"/>
+        </ComboBox>
+        <Label Content="Phone  number" HorizontalAlignment="Left" Margin="12,281,0,0" VerticalAlignment="Top" Width="173"/>
+        <TextBox x:Name="textBox_telNo" HorizontalAlignment="Left" Height="23" Margin="12,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" AutomationProperties.HelpText="### ### ###"/>
+        <Label Content="Mail Address" HorizontalAlignment="Left" Margin="12,340,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.475,-0.834"/>
+        <TextBox x:Name="textBox_mail" HorizontalAlignment="Left" Height="23" Margin="12,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <Label Content="Address" HorizontalAlignment="Left" Margin="12,160,0,0" VerticalAlignment="Top" Width="142"/>
+        <TextBox x:Name="textBox_street" HorizontalAlignment="Left" Height="24" Margin="12,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" AutomationProperties.HelpText="Street name"/>
+        <TextBox x:Name="textBox_streetNumber" HorizontalAlignment="Left" Height="23" Margin="120,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Building number"/>
+        <TextBox x:Name="textBox_flatNumber" HorizontalAlignment="Left" Height="23" Margin="278,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Flat number"/>
+        <TextBox x:Name="textBox_postalCode" HorizontalAlignment="Left" Height="23" Margin="12,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Postal code number"/>
+        <TextBox x:Name="textBox_city" HorizontalAlignment="Left" Height="23" Margin="185,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="City name"/>
+    </Grid>
+</Window>
