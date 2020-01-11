@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Hotel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ClientList />
+  <RoomList>
+    <HotelRoom>
+      <Name>SingleRoom1</Name>
+      <RoomType1>SINGLE</RoomType1>
+      <Price>150</Price>
+    </HotelRoom>
+    <HotelRoom>
+      <Name>DoubleRoom1</Name>
+      <RoomType1>DOUBLE</RoomType1>
+      <Price>300</Price>
+    </HotelRoom>
+    <HotelRoom>
+      <Name>FamilyRoom1</Name>
+      <RoomType1>FAMILY</RoomType1>
+      <Price>500</Price>
+    </HotelRoom>
+    <HotelRoom>
+      <Name>SingleRoom2</Name>
+      <RoomType1>SINGLE</RoomType1>
+      <Price>150</Price>
+    </HotelRoom>
+    <HotelRoom>
+      <Name>DoubleRoom2</Name>
+      <RoomType1>DOUBLE</RoomType1>
+      <Price>300</Price>
+    </HotelRoom>
+    <HotelRoom>
+      <Name>SingleRoom3</Name>
+      <RoomType1>SINGLE</RoomType1>
+      <Price>150</Price>
+    </HotelRoom>
+    <HotelRoom>
+      <Name>SingleRoom4</Name>
+      <RoomType1>SINGLE</RoomType1>
+      <Price>150</Price>
+    </HotelRoom>
+    <HotelRoom>
+      <Name>DoubleRoom3</Name>
+      <RoomType1>DOUBLE</RoomType1>
+      <Price>300</Price>
+    </HotelRoom>
+    <HotelRoom>
+      <Name>FamilyRoom2</Name>
+      <RoomType1>FAMILY</RoomType1>
+      <Price>500</Price>
+    </HotelRoom>
+  </RoomList>
+</Hotel>

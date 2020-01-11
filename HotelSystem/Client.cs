@@ -9,53 +9,74 @@ using System.Xml.Serialization;
 namespace HotelSystem
 {
     [Serializable]
-    public abstract class Client : IEquatable<Client>, ICloneable
+    public class Client : IEquatable<Client>, ICloneable
     {
-        public enum Gender { F, M };
+        public enum Gender {F, M};
 
         #region properties
         private string firstName;
         private string lastName;
         private Gender gender;
-        private DateTime dataUrodzenia;
+        private DateTime dateOfBirth;
         private Address address;
         private string mailAddress;
         private string telNo;
-        private HotelRoom hotelRoom;
-        private DateTime entryDate;
-        private DateTime departureDate;
+
+        
 
         #endregion
 
         public string LastName { get => lastName; set => lastName = value; }
         public string FirstName { get => firstName; set => firstName = value; }
-        public DateTime DataUrodzenia { get => dataUrodzenia; set => dataUrodzenia = value; }
-        public Gender Gender1 { get => gender; set => gender = value; }
+        public string DateOfBirth
+        { 
+            get => dateOfBirth.ToString();
+
+            set 
+            {
+                dateOfBirth = DateTime.Parse(value); 
+            }
+        }
+        public string Gender1 { get => gender.ToString();
+            set
+            {
+                if(string.Compare(value, "F")==0 || string.Compare(value, "Female") == 0)
+                gender = Gender.F;
+
+                else if (string.Compare(value, "M") == 0 || string.Compare(value, "Male") == 0)
+                gender = Gender.M;
+
+                else throw new ArgumentException("Gender is only F or M");
+            }
+        }
+
         public string MailAddress { get => mailAddress; set => mailAddress = value; }
         public string TelNo { get => telNo; set => telNo = value; }
-        internal HotelRoom HotelRoom { get => hotelRoom; set => hotelRoom = value; }
-        public DateTime EntryDate { get => entryDate; set => entryDate = value; }
-        public DateTime DepartureDate { get => departureDate; set => departureDate = value; }
-        internal Address Address { get => address; set => address = value; }
+        public Address Address { get => address; set => address = value; }
+
 
         #region constructors
+
         public Client()
         {
             firstName = "";
             lastName = "";
-            DataUrodzenia = DateTime.Now;
+            DateOfBirth = DateTime.Now.ToString();
+            
         }
 
-        public Client(string firstName, string lastName, Gender gender, DateTime dataUrodzenia,Address address, string mailAddress, string telNo)
+        public Client(string firstName, string lastName, string gender, string dateofbirth,Address address, string mailAddress, string telNo)
         {
-            this.gender = gender;
+            DateOfBirth = dateofbirth;
+            if (Age() < 18) throw new Exception("Client to young to make a reservation.");
+            Gender1 = gender;
             this.firstName = firstName;
             this.lastName = lastName;
-            this.dataUrodzenia = dataUrodzenia;
             this.address = address;
             this.mailAddress = mailAddress;
             if(IsDigitsOnly(telNo) && telNo.Length>=6)
             this.TelNo = telNo;
+            
         }
 
         #endregion
@@ -70,21 +91,23 @@ namespace HotelSystem
             return true;
         }
 
-        public int Wiek()
-        {
-            return (DateTime.Now.Year - DataUrodzenia.Year);
+        public int Age()
+        { 
+            int age = DateTime.Now.Year - dateOfBirth.Year;
+            if (DateTime.Now.DayOfYear < dateOfBirth.DayOfYear)
+                age = age - 1;
+            return age;
         }
         public override string ToString()
         {
-            return FirstName + " " + LastName + " " + DataUrodzenia + " " + Gender1 + " " + MailAddress + " " + TelNo;
+            return "Client: "+FirstName + " " + LastName + " " + DateOfBirth + " " + Gender1 + " " + MailAddress + " " + TelNo;
         }
 
         public bool Equals(Client other)
         {
-
             if (other == null)
                 return false;
-            return this.FirstName == other.FirstName && this.LastName == other.LastName && this.DataUrodzenia == other.DataUrodzenia && this.Gender1 == other.Gender1 && this.Address==other.Address;
+            return this.FirstName == other.FirstName && this.LastName == other.LastName && this.DateOfBirth == other.DateOfBirth && this.Gender1 == other.Gender1 && this.Address==other.Address;
         }
 
         public object Clone()

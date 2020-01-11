@@ -6,46 +6,61 @@
         xmlns:local="clr-namespace:HotelGUI"
         mc:Ignorable="d"
         Title="Hotel Management System" Height="566.605" Width="1161.314" ShowInTaskbar="False">
-    <Grid>
+    <Window.Resources>
+        <SolidColorBrush x:Key="blue" Color="#FFDDF2FF"/>
+    </Window.Resources>
+    <Grid Margin="-17,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="313*"/>
-            <ColumnDefinition Width="479*"/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="413*"/>
+            <ColumnDefinition Width="472*"/>
+            <ColumnDefinition Width="262*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="First name" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Last name" HorizontalAlignment="Left" Margin="163,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_firstName" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
-        <TextBox x:Name="textBox_lastName" HorizontalAlignment="Left" Height="23" Margin="163,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
-        <Label Content="Date of birth" HorizontalAlignment="Left" Margin="12,69,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_day" HorizontalAlignment="Left" Height="23" Margin="12,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" UndoLimit="102" AutomationProperties.HelpText="Day"/>
-        <ComboBox x:Name="comboBox_month" HorizontalAlignment="Left" Margin="65,101,0,0" VerticalAlignment="Top" Width="75">
-            <Button Content="January"/>
-            <Button Content="February"/>
-            <Button Content="March"/>
-            <Button Content="April"/>
-            <Button Content="May"/>
-            <Button Content="June"/>
-            <Button Content="July"/>
-            <Button Content="August"/>
-            <Button Content="September"/>
-            <Button Content="October"/>
-            <Button Content="November"/>
-            <Button Content="December"/>
-        </ComboBox>
-        <TextBox x:Name="textBox_year" HorizontalAlignment="Left" Height="23" Margin="145,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Year" SpellCheck.IsEnabled="True"/>
-        <Label Content="Gender" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="50"/>
-        <ComboBox x:Name="comboBox_gender" HorizontalAlignment="Left" Margin="65,128,0,0" VerticalAlignment="Top" Width="120">
-            <Button Content="Male"/>
-            <Button Content="Female"/>
-        </ComboBox>
-        <Label Content="Phone  number" HorizontalAlignment="Left" Margin="12,281,0,0" VerticalAlignment="Top" Width="173"/>
-        <TextBox x:Name="textBox_telNo" HorizontalAlignment="Left" Height="23" Margin="12,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" AutomationProperties.HelpText="### ### ###"/>
-        <Label Content="Mail Address" HorizontalAlignment="Left" Margin="12,340,0,0" VerticalAlignment="Top" Width="108" RenderTransformOrigin="0.475,-0.834"/>
-        <TextBox x:Name="textBox_mail" HorizontalAlignment="Left" Height="23" Margin="12,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <Label Content="Address" HorizontalAlignment="Left" Margin="12,160,0,0" VerticalAlignment="Top" Width="142"/>
-        <TextBox x:Name="textBox_street" HorizontalAlignment="Left" Height="24" Margin="12,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77" AutomationProperties.HelpText="Street name"/>
-        <TextBox x:Name="textBox_streetNumber" HorizontalAlignment="Left" Height="23" Margin="120,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Building number"/>
-        <TextBox x:Name="textBox_flatNumber" HorizontalAlignment="Left" Height="23" Margin="278,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Flat number"/>
-        <TextBox x:Name="textBox_postalCode" HorizontalAlignment="Left" Height="23" Margin="12,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Postal code number"/>
-        <TextBox x:Name="textBox_city" HorizontalAlignment="Left" Height="23" Margin="185,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="City name"/>
+        <Label Content="First name" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="26" Width="65" Grid.Column="1"/>
+        <Label Content="Last name" HorizontalAlignment="Left" Margin="142,36,0,0" VerticalAlignment="Top" Height="26" Width="64" Grid.Column="1"/>
+        <TextBox x:Name="textBox_firstName" HorizontalAlignment="Left" Height="23" Margin="10,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" Grid.Column="1" TextChanged="textBox_firstName_TextChanged"/>
+        <TextBox x:Name="textBox_lastName" HorizontalAlignment="Left" Height="23" Margin="142,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Grid.Column="1" TextChanged="textBox_lastName_TextChanged"/>
+        <Label Content="DATE OF BIRTH" HorizontalAlignment="Left" Margin="0,92,0,0" VerticalAlignment="Top" Height="26" Width="408" Background="{DynamicResource blue}" Grid.Column="1"/>
+        <Label Content="Gender" HorizontalAlignment="Left" Margin="287,38,0,0" VerticalAlignment="Top" Width="92" Height="26" RenderTransformOrigin="1.326,1.635" Grid.Column="1"/>
+        <Label Content="Phone  number" HorizontalAlignment="Left" Margin="0,327,0,0" VerticalAlignment="Top" Width="408" Height="26" Background="{DynamicResource blue}" Grid.Column="1"/>
+        <TextBox x:Name="textBox_telNo" HorizontalAlignment="Left" Height="23" Margin="10,358,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" AutomationProperties.HelpText="### ### ###" Grid.Column="1" TextChanged="textBox_telNo_TextChanged"/>
+        <Label Content="Mail Address" HorizontalAlignment="Left" Margin="0,386,0,0" VerticalAlignment="Top" Width="408" RenderTransformOrigin="0.475,-0.834" Height="26" Background="{DynamicResource blue}" Grid.Column="1"/>
+        <TextBox x:Name="textBox_mail" HorizontalAlignment="Left" Height="21" Margin="10,417,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" Grid.Column="1" TextChanged="textBox_mail_TextChanged"/>
+        <Label Content="ADDRESS" HorizontalAlignment="left" Margin="0,178,0,0" VerticalAlignment="Top" Width="408" Height="26" BorderBrush="#FFCDD6E6" Background="{DynamicResource blue}" Grid.Column="1"/>
+        <TextBox x:Name="textBox_street" HorizontalAlignment="Left" Height="23" Margin="10,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" AutomationProperties.HelpText="Street name" Grid.Column="1" TextChanged="textBox_street_TextChanged"/>
+        <TextBox x:Name="textBox_streetNumber" HorizontalAlignment="Left" Height="23" Margin="185,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" AutomationProperties.HelpText="Building number" Grid.Column="1" TextChanged="textBox_streetNumber_TextChanged"/>
+        <TextBox x:Name="textBox_flatNumber" HorizontalAlignment="Left" Height="23" Margin="306,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" AutomationProperties.HelpText="Flat number" Grid.Column="1" TextChanged="textBox_flatNumber_TextChanged"/>
+        <TextBox x:Name="textBox_postalCode" HorizontalAlignment="Left" Height="23" Margin="10,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="82" AutomationProperties.HelpText="Postal code number" Grid.Column="1" TextChanged="textBox_postalCode_TextChanged"/>
+        <TextBox x:Name="textBox_city" HorizontalAlignment="Left" Height="23" Margin="99,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" AutomationProperties.HelpText="City name" Grid.Column="1" TextChanged="textBox_city_TextChanged"/>
+        <Label Content="Street name" HorizontalAlignment="Left" Margin="10,209,0,0" VerticalAlignment="Top" Width="85" Grid.Column="1" Height="26"/>
+        <Label Content="Street number" HorizontalAlignment="Left" Margin="185,209,0,0" VerticalAlignment="Top" Height="26" Width="90" Grid.Column="1"/>
+        <Label Content="Flat number" HorizontalAlignment="Left" Margin="306,209,0,0" VerticalAlignment="Top" Height="26" Width="83" Grid.Column="1"/>
+        <Label Content="Postal code" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top" Height="26" Width="75" Grid.Column="1"/>
+        <Label Content="City" HorizontalAlignment="Left" Margin="99,268,0,0" VerticalAlignment="Top" Height="26" Width="120" Grid.Column="1"/>
+        <Label Content="CLIENT DATA" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Background="{DynamicResource blue}" Width="408" Grid.Column="1" Height="26"/>
+        <Button x:Name="button_clear" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Margin="39,417,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="button_clear_Click"/>
+        <Label Content="Hotel room" Grid.Column="2" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="472" Height="26" Background="{DynamicResource blue}"/>
+        <Label Content="Room type" Grid.Column="2" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
+        <Label Content="Check-in date" Grid.Column="2" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="104" Height="26"/>
+        <Label Content="Check-out date" Grid.Column="2" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="104" Height="26"/>
+        <Label Content="Available rooms" Grid.Column="2" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="462" Background="{DynamicResource blue}" Height="26"/>
+        <ListBox x:Name="listbox_rooms" Grid.Column="2" HorizontalAlignment="Left" Height="172" Margin="10,209,0,0" VerticalAlignment="Top" Width="462"/>
+        <Label Content="Reservation price" Grid.Column="2" HorizontalAlignment="Left" Margin="10,386,0,0" VerticalAlignment="Top" Width="462" Background="{DynamicResource blue}" Height="26"/>
+        <TextBox x:Name="textbox_reservationPrice" Grid.Column="2" HorizontalAlignment="Left" Height="29" Margin="167,486,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
+        <Button x:Name="button_reserve" Content="Reserve" Grid.Column="3" HorizontalAlignment="Left" Height="26" Margin="39,486,0,0" VerticalAlignment="Top" Width="191" Background="#FF2B82D8"/>
+        <Label Content="Total cost" Grid.Column="2" HorizontalAlignment="Left" Margin="10,486,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
+        <Label Content="Room" Grid.Column="2" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
+        <TextBox x:Name="textbox_chosenroom" Grid.Column="2" HorizontalAlignment="Left" Height="29" Margin="167,417,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="305" IsReadOnly="True"/>
+        <Label Content="check-in : check-out date" Grid.Column="2" HorizontalAlignment="Left" Margin="10,451,0,0" VerticalAlignment="Top" Width="157" Height="26"/>
+        <TextBox x:Name="textbox_checkinReservation" Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="167,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" IsReadOnly="True"/>
+        <Label Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="308,451,0,0" VerticalAlignment="Top" Height="26" Width="15"/>
+        <TextBox x:Name="textbox_checkoutReservation" Grid.Column="2" HorizontalAlignment="Left" Height="30" Margin="328,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" IsReadOnly="True"/>
+        <Button x:Name="button_check" Content="Check reservation" Grid.Column="3" HorizontalAlignment="Left" Margin="39,451,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8"/>
+        <DatePicker x:Name="datepicker_dateofBirth" Grid.Column="1" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="182" Height="26" FirstDayOfWeek="Monday"/>
+        <DatePicker x:Name="datePicker_checkInDate" Grid.Column="2" HorizontalAlignment="Left" Margin="119,76,0,0" VerticalAlignment="Top" Width="145" FirstDayOfWeek="Monday" Height="24"/>
+        <DatePicker x:Name="datepicker_checkOutDate" Grid.Column="2" HorizontalAlignment="Left" Margin="119,123,0,0" VerticalAlignment="Top" Height="26" Width="145" FirstDayOfWeek="Monday"/>
+        <RadioButton x:Name="radiobutton_male" Content="Male" Grid.Column="1" HorizontalAlignment="Left" Margin="287,64,0,0" VerticalAlignment="Top" Height="23" Width="50"/>
+        <RadioButton x:Name="radiobutton_female" Content="Female" Grid.Column="1" HorizontalAlignment="Left" Margin="342,64,0,0" VerticalAlignment="Top" Height="23" Width="57"/>
+        <ComboBox x:Name="cb_roomType" Grid.Column="2" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
     </Grid>
 </Window>

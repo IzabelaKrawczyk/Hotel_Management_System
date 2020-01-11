@@ -11,79 +11,88 @@ using System.Xml.Serialization;
 namespace HotelSystem
 {
     [Serializable]
-    class Hotel: ICloneable, ISaving
+    public class Hotel: ICloneable, ISaving
     {
         private int reservationsNumber;
-        private List<Client> reservations;
-        private List<HotelRoom> rooms;
+        private List<Client> clientList;
+        private List<HotelRoom> roomList;
+        private List<Reservation> reservationList;
         private int roomsNumber;
 
-        public int LiczbaRezerwacji { get => reservationsNumber; set => reservationsNumber = value; }
-        public List<Client> Reservations { get => reservations; set => reservations = value; }
-        internal List<HotelRoom> Rooms { get => rooms; set => rooms = value; }
+        public List<Client> ClientList { get => clientList; set => clientList = value; }
+        internal List<HotelRoom> Rooms { get => RoomList; set => RoomList = value; }
+        public int ReservationsNumber { get => reservationsNumber;}
+        internal List<Reservation> ReservationList { get => reservationList; set => reservationList = value; }
+        public int RoomsNumber { get => roomsNumber;}
+        public List<HotelRoom> RoomList { get => roomList; set => roomList = value; }
 
         public Hotel()
         {
-            LiczbaRezerwacji = 0;
+            reservationsNumber = 0;
             roomsNumber = 0;
-            Reservations= new List<Client>();
-            rooms = new List<HotelRoom>();
+            clientList= new List<Client>();
+            RoomList = new List<HotelRoom>();
+            reservationList = new List<Reservation>();
+
         }
         public Hotel(List<HotelRoom> rooms):this()
         {
-            this.rooms = new List<HotelRoom>(rooms);
-            roomsNumber = rooms.Count;
-
+            this.RoomList = new List<HotelRoom>(rooms);
+            roomsNumber = RoomList.Count;
         }
 
-        public Hotel(List<Client> reservations)
-        {
-            this.Reservations = reservations;
-            LiczbaRezerwacji++;
-        }
 
-        public void DodajRezerwacje(Client c)
+        public void AddReservation(Client c, HotelRoom r, string checkInDate, string checkOutDate)
         {
-            if(isRoomFree(c.HotelRoom))
-            Reservations.Add(c);
-            LiczbaRezerwacji++;
+
+            if (isRoomFree(checkInDate, checkOutDate, r))
+            {
+                if (clientTimes(c)>=1)
+                {
+                    Reservation res = new Reservation(c, r, checkInDate, checkOutDate);
+                    res.ReservationPrice = 0.9 * r.Price * res.HowManyNights();
+                    reservationList.Add(res);
+                    reservationsNumber++;
+                }
+                else
+                {
+                    ClientList.Add(c);
+                    Reservation res = new Reservation(c, r, checkInDate, checkOutDate);
+                    res.ReservationPrice = 1.0 * r.Price * res.HowManyNights();
+                    reservationList.Add(res);
+                    reservationsNumber++;
+                }
+            }
+            else throw new Exception("Room is not free or it doesn't exist.");
+
         }
 
         public override string ToString()
         {
-            StringBuilder myStringBuilder = new StringBuilder("Rezerwacje: " + Environment.NewLine);
-            foreach (Client c in Reservations)
-                myStringBuilder.AppendLine(c?.ToString()); //odpali gdy c nie jest nullem
+            StringBuilder myStringBuilder = new StringBuilder("Rezerwacje hotelu: " + Environment.NewLine);
+            foreach (Reservation res in reservationList)
+                myStringBuilder.AppendLine(res?.ToString()); //odpali gdy c nie jest nullem
 
             return myStringBuilder.ToString();
         }
 
-        public bool isRoomFree(HotelRoom room)
-        {
-            if (!Rooms.Contains(room)) return false;
-            else
-            {
-                foreach (Client c in Reservations)
-                    if (c.HotelRoom == room) return false;
-            }
-            return true;
-        }
 
         public int clientTimes(Client client)
         {
             int counter = 0;
-            foreach (Client c in Reservations)
-                if (c == client) counter++;
+            foreach(Reservation res in reservationList)
+                if(res.Client==client) counter++;
             return counter;
         }
 
-        public double reservationPrice(Client c)
+        public double getReservationPrice(int reservationId)
         {
-            //for regular customers
-            if (clientTimes(c)>1)
-               c.HotelRoom.Price = 0.9 * c.HotelRoom.Price;
-           return c.HotelRoom.Price;
+            Reservation temp = new Reservation();
+            temp = reservationList.Find(i => i.ReservationId == reservationId);
+
+            return temp.ReservationPrice;
         }
+
         public void removeRoom(HotelRoom r)
         {
             if (!Rooms.Contains(r)) Console.WriteLine("There is no such a room");
@@ -97,8 +106,25 @@ namespace HotelSystem
 
         public void removeClient(string firstName, string lastName, Client.Gender gender, DateTime dataUrodzenia)
         {
-            Reservations.RemoveAll(c => c.FirstName == firstName && c.LastName == lastName && c.Gender1==gender&& c.DataUrodzenia==dataUrodzenia);
-            reservationsNumber = reservations.Count;
+            reservationList.RemoveAll(c => c.Client.FirstName == firstName && c.Client.LastName == lastName && c.Client.Gender1 ==gender.ToString() && c.Client.DateOfBirth ==dataUrodzenia.ToString());
+            reservationsNumber = reservationList.Count;
+        }
+
+        public bool isRoomFree(string checkIndate, string checkOutdate, HotelRoom room)
+        {
+            DateTime checkIn = DateTime.Parse(checkIndate);
+            DateTime checkOut = DateTime.Parse(checkOutdate);
+
+            foreach (Reservation r in reservationList)
+            {
+                DateTime tempIn = DateTime.Parse(r.CheckInDate);
+                DateTime tempOut = DateTime.Parse(r.CheckOutDate);
+                r.Room = room;
+                if (checkIn <= tempIn && checkOut <= tempOut) return false;
+                if (checkIn >= tempIn && checkOut <= tempOut) return false;
+                if (checkIn < tempOut && checkOut >= tempOut) return false;
+            }
+            return true;
         }
 
         public object Clone()
@@ -109,12 +135,14 @@ namespace HotelSystem
         public Hotel DeepCopy()
         {
             Hotel copy = new Hotel();
-            var new1 = new List<Client>(reservations.Select(x => ((Client)x.Clone())));
-            copy.reservations = new1;
-            var new2 = new List<HotelRoom>(rooms.Select(x => ((HotelRoom)x.Clone())));
-            copy.rooms = new2;
-            copy.LiczbaRezerwacji = reservations.Count();
-
+            var new1 = new List<Client>(clientList.Select(x => ((Client)x.Clone())));
+            copy.clientList = new1;
+            var new2 = new List<HotelRoom>(RoomList.Select(x => ((HotelRoom)x.Clone())));
+            copy.RoomList = new2;
+            var new3 = new List<Reservation>(reservationList.Select(x => ((Reservation)x.Clone())));
+            copy.ReservationList = new3;
+            copy.reservationsNumber = reservationList.Count();
+            copy.roomsNumber = RoomList.Count;
             return copy;
         }
 

@@ -13,7 +13,7 @@ namespace HotelSystem
         private string streetNumber;
         private string flatNumber;
         private string city;
-        private string postalCode;
+        private int postalCode;
         
         public Address()
         {
@@ -26,17 +26,30 @@ namespace HotelSystem
             PostalCode = postalCode;
         }
 
-        public Address(string street, string streetNumber, string flatNumber, string city, string postalCode) : this(street, streetNumber)
-        {
-            this.flatNumber = flatNumber;
-            this.city = city;
-            this.postalCode = postalCode;
+        public Address(string city, string postalCode, string street, string streetNumber, string flatNumber):this(city,postalCode)
+        { 
+            this.street = street;
+            this.streetNumber = streetNumber;
         }
 
-        public string PostalCode { get => postalCode; set => postalCode = value; }
+        public string PostalCode { 
+            get => postalCode.ToString();
+            set
+            {
+                 postalCode = int.Parse(value); 
+            }
+        }
         public string City { get => city; set => city = value; }
         public string StreetNumber1 { get => streetNumber; set => streetNumber = value; }
         public string Street1 { get => street; set => street = value; }
         public string FlatNumber { get => flatNumber; set => flatNumber = value; }
+
+        public override string ToString()
+        {
+            StringBuilder myStringBuilder = new StringBuilder("City: " + City + "Postalcode: " + PostalCode.Substring(0, 2) + "-" + PostalCode.Substring(2, 3) + System.Environment.NewLine);
+            myStringBuilder.Append("Street: " + Street1 + " " + StreetNumber1 + "flat number: " + FlatNumber);
+
+            return myStringBuilder.ToString();
+        }
     }
 }
