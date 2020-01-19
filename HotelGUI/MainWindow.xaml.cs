@@ -25,90 +25,26 @@ namespace HotelGUI
         ObservableCollection<HotelRoom> observable;
         Hotel hotel = new Hotel();
         Client client = new Client();
+        HotelRoom room=new HotelRoom();
         Address address = new Address();
+       
+        Reservation reservation;
      
         
 
         public MainWindow()
         {
             hotel = Hotel.ReadXML("hotel.xml");
-            
-            Reservation reservation = new Reservation();
-            DateTime checkIn;
-            DateTime checkOut;
             InitializeComponent();
-            listbox_rooms.ItemsSource = hotel.RoomList;
+            observable = new ObservableCollection<HotelRoom>(hotel.RoomList);
+            listbox_rooms.ItemsSource = observable;
             ComboBox comboBox = new ComboBox();
             comboBox = cb_roomType;
             comboBox.Items.Add("SINGLE");
             comboBox.Items.Add("DOUBLE");
             comboBox.Items.Add("FAMILY");
-
-
         }
 
-        private void textBox_firstName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            client.FirstName = objTextBox;
-
-        }
-
-        private void textBox_lastName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            client.LastName = objTextBox;
-        }
-        private void textBox_street_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            address.Street1 = objTextBox;
-        }
-
-        private void textBox_streetNumber_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            address.StreetNumber1 = objTextBox;
-        }
-
-        private void textBox_flatNumber_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            address.FlatNumber = objTextBox;
-        }
-
-        private void textBox_postalCode_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            address.PostalCode = objTextBox;
-        }
-
-        private void textBox_city_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            address.City = objTextBox;
-        }
-
-        private void textBox_telNo_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            client.TelNo = objTextBox;
-        }
-
-        private void textBox_mail_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            string objTextBox = textBox.Text;
-            client.MailAddress = objTextBox;
-        }
 
         private void button_clear_Click(object sender, RoutedEventArgs e)
         {
@@ -127,12 +63,103 @@ namespace HotelGUI
             cb_roomType.Text = null;
             datePicker_checkInDate.Text = null;
             datepicker_checkOutDate.Text = null;
-            textbox_chosenroom.Text = null;
-            textbox_checkinReservation.Text = null;
-            textbox_checkoutReservation.Text = null;
-            textbox_reservationPrice.Text = null;
         }
 
+        private void button_check_Click(object sender, RoutedEventArgs e)
+        {
+            string temp = textBox_firstName.Text;
+            if (temp == null)
+                MessageBox.Show("First name is null", "Important Message");
+            else
+                client.FirstName = temp;
 
+            temp = textBox_lastName.Text;
+            if (temp == null)
+                MessageBox.Show("Last name is null", "Important Message");
+            else
+                client.LastName = temp;
+
+            if(radiobutton_male==null && radiobutton_female==null)
+                MessageBox.Show("Select gender", "Important Message");
+            else
+                client.Gender1 = (bool) radiobutton_male.IsChecked ? "M" : "F";
+
+            
+            if (datepicker_dateofBirth.SelectedDate == null)
+                MessageBox.Show("Date of birth is not selected", "Important Message");
+            else
+                client.DateOfBirth = datepicker_dateofBirth.SelectedDate.ToString();
+
+            temp= textBox_telNo.Text;
+            if(temp==null)
+                MessageBox.Show("Telephone number is null", "Important Message");
+            else
+                client.TelNo = temp;
+
+            temp = textBox_mail.Text;
+            if (temp == null)
+                MessageBox.Show("Email address is null", "Important Message");
+            else
+                client.MailAddress = temp;
+
+            temp = textBox_street.Text;
+            if (temp == null)
+                MessageBox.Show("Street name is null", "Important Message");
+            else
+                address.Street1 = temp;
+
+            temp = textBox_streetNumber.Text;
+            if (temp == null)
+                MessageBox.Show("Street number is null", "Important Message");
+            else
+                address.StreetNumber1 = temp;
+
+            temp = textBox_flatNumber.Text;
+            address.FlatNumber = temp;
+
+            temp= textBox_postalCode.Text;
+            if (temp == null)
+                MessageBox.Show("Postal code is null", "Important Message");
+            else
+                address.PostalCode = temp;
+
+            temp = textBox_city.Text;
+            if (temp == null)
+                MessageBox.Show("City name is null", "Important Message");
+            else
+                address.City = temp;
+
+            client.Address = address;
+
+            room.RoomType1 = cb_roomType.Text;
+            var roomData = listbox_rooms.SelectedItem.ToString().Split(' ');
+            room.Name = roomData[1];
+            room.Price = Double.Parse(roomData[3]);
+
+            reservation = new Reservation(client,room, datePicker_checkInDate.SelectedDate.ToString(), datepicker_checkOutDate.SelectedDate.ToString());
+
+            ReservationWindow reservationWindow = new ReservationWindow(reservation, hotel);
+            reservationWindow.ShowDialog();
+        }
+
+        private void cb_roomType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cb_roomType.SelectedItem==null)
+            {
+                listbox_rooms.ItemsSource = hotel.RoomList;
+            }
+            else
+            {
+                string roomType = cb_roomType.SelectedItem.ToString();
+                observable = new ObservableCollection<HotelRoom>();
+                for (int i = 0; i < hotel.RoomList.Count; i++)
+                {
+                    if (hotel.RoomList[i].RoomType1.Equals(roomType))
+                        observable.Add(hotel.RoomList[i]);
+                }
+                listbox_rooms.ItemsSource = observable;
+            }
+            
+        }
     }
 }

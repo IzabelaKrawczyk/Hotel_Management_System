@@ -16,3 +16,5 @@ C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.csproj.GenerateResourc
 C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.csproj.CopyComplete
 C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.exe
 C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.pdb
+C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\ReservationWindow.g.cs
+C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\ReservationWindow.baml

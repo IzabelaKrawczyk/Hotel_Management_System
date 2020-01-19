@@ -36,7 +36,7 @@ namespace HotelSystem
             get => postalCode.ToString();
             set
             {
-                 postalCode = int.Parse(value); 
+                 postalCode = Int32.Parse(value); 
             }
         }
         public string City { get => city; set => city = value; }

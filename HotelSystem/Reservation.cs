@@ -18,6 +18,7 @@ namespace HotelSystem
 
         public Reservation()
         {
+            reservationId++;
         }
 
         public Reservation(Client client, HotelRoom room, string checkInDate, string checkOutDate)
@@ -27,6 +28,7 @@ namespace HotelSystem
             CheckInDate = checkInDate;
             CheckOutDate = checkOutDate;
             reservationId++;
+            ReservationPrice = HowManyNights() * room.Price;
         }
 
         public Client Client { get => client; set => client = value; }
@@ -50,7 +52,7 @@ namespace HotelSystem
         }
 
         public double ReservationPrice { get => reservationPrice; set => reservationPrice = value; }
-        internal HotelRoom Room { get => room; set => room = value; }
+        public HotelRoom Room { get => room; set => room=value; }
 
         public int HowManyNights()
         {
@@ -66,7 +68,8 @@ namespace HotelSystem
 
         public override string ToString()
         {
-            string value = "Reservation: " + ReservationId + " " + Client + " " + Room + " "+System.Environment.NewLine + "checkin date: " + CheckInDate + " checkout date: " + CheckOutDate+ System.Environment.NewLine;
+            string value = "Reservation ID: " +ReservationId + " " + Room + " "+System.Environment.NewLine + "check-in date: " + CheckInDate + " check-out date: " + CheckOutDate + System.Environment.NewLine;
+            value += "Total prize: " + ReservationPrice;
             return value;
         }
     }
