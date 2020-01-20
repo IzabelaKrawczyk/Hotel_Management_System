@@ -20,9 +20,9 @@ namespace HotelSystem
         private int roomsNumber;
 
         public List<Client> ClientList { get => clientList; set => clientList = value; }
-        internal List<HotelRoom> Rooms { get => RoomList; set => RoomList = value; }
+        public List<HotelRoom> Rooms { get => RoomList; set => RoomList = value; }
         public int ReservationsNumber { get => reservationsNumber;}
-        internal List<Reservation> ReservationList { get => reservationList; set => reservationList = value; }
+        public List<Reservation> ReservationList { get => reservationList; set => reservationList = value; }
         public int RoomsNumber { get => roomsNumber;}
         public List<HotelRoom> RoomList { get => roomList; set => roomList = value; }
 

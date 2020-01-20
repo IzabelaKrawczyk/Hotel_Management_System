@@ -20,8 +20,8 @@ namespace HotelGUI
     /// </summary>
     public partial class ReservationWindow : Window
     {
-        Hotel hotel;
-        Reservation reservation;
+        public Hotel hotel;
+        public Reservation reservation;
         
         public ReservationWindow()
         {
@@ -35,7 +35,7 @@ namespace HotelGUI
             if (reservation != null)
             {
                 textbox_client.Text = reservation.Client.ToString();
-                textblock_Reservation.Text = reservation.ToString();
+                textblock_Reservation.Text = reservation.Room.ToString()+System.Environment.NewLine+"Stay details: "+reservation.CheckInDate+" - "+reservation.CheckOutDate+ System.Environment.NewLine + "Total cost: "+reservation.ReservationPrice;
             }
         }
 

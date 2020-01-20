@@ -22,13 +22,13 @@ namespace HotelGUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<HotelRoom> observable;
-        Hotel hotel = new Hotel();
-        Client client = new Client();
-        HotelRoom room=new HotelRoom();
-        Address address = new Address();
-       
-        Reservation reservation;
+        public ObservableCollection<HotelRoom> observable;
+        public Hotel hotel = new Hotel();
+        public Client client = new Client();
+        public HotelRoom room =new HotelRoom();
+        public Address address = new Address();
+
+        public Reservation reservation;
      
         
 
@@ -142,24 +142,30 @@ namespace HotelGUI
             reservationWindow.ShowDialog();
         }
 
-        private void cb_roomType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void Button_Filter_Click(object sender, RoutedEventArgs e)
         {
-            if (cb_roomType.SelectedItem==null)
+            if (cb_roomType.SelectedItem != null && datePicker_checkInDate.SelectedDate != null && datepicker_checkOutDate.SelectedDate != null)
             {
-                listbox_rooms.ItemsSource = hotel.RoomList;
-            }
-            else
-            {
+                string checkindate = datePicker_checkInDate.SelectedDate.ToString();
+                string checkoutdate = datepicker_checkOutDate.SelectedDate.ToString();
                 string roomType = cb_roomType.SelectedItem.ToString();
                 observable = new ObservableCollection<HotelRoom>();
                 for (int i = 0; i < hotel.RoomList.Count; i++)
                 {
-                    if (hotel.RoomList[i].RoomType1.Equals(roomType))
+                    if (hotel.RoomList[i].RoomType1.Equals(roomType) && hotel.isRoomFree(checkindate, checkoutdate, hotel.RoomList[i]))
                         observable.Add(hotel.RoomList[i]);
                 }
                 listbox_rooms.ItemsSource = observable;
-            }
-            
+            } 
+
+            else MessageBox.Show("Select room type, check-in date, check-out date.", "Important Message");
+        }
+
+        private void button_allReservations_Click(object sender, RoutedEventArgs e)
+        {
+            ReservationsWindow okno = new ReservationsWindow(hotel);
+            okno.ShowDialog();
         }
     }
 }

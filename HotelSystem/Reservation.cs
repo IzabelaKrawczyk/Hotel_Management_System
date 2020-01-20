@@ -68,9 +68,10 @@ namespace HotelSystem
 
         public override string ToString()
         {
-            string value = "Reservation ID: " +ReservationId + " " + Room + " "+System.Environment.NewLine + "check-in date: " + CheckInDate + " check-out date: " + CheckOutDate + System.Environment.NewLine;
-            value += "Total prize: " + ReservationPrice;
+            string value = "Reservation ID: " +ReservationId + "Client: "+Client+ System.Environment.NewLine+ "Room:  " + Room + " "+System.Environment.NewLine + "Stay details: " + CheckInDate + "- " + CheckOutDate + System.Environment.NewLine;
+            value += "Total prize: " + ReservationPrice + System.Environment.NewLine;
             return value;
         }
+
     }
 }
