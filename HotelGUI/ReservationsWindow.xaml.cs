@@ -21,8 +21,8 @@ namespace HotelGUI
     /// </summary>
     public partial class ReservationsWindow : Window
     {
-        public Hotel hotel;
-        ObservableCollection<Reservation> observableReservations;
+        private Hotel hotel;
+        private ObservableCollection<Reservation> observableReservations;
 
         public ReservationsWindow(Hotel hotel)
         {
@@ -30,38 +30,14 @@ namespace HotelGUI
             this.hotel = hotel;
             observableReservations = new ObservableCollection<Reservation>(hotel.ReservationList);
             ListBox_Reservations.ItemsSource = observableReservations;
-
+            
         }
 
-        private void MenuOpen_Click(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            bool? result = dlg.ShowDialog();
-            if (result == true)
-            {
-                string filename = dlg.FileName;
-                hotel = Hotel.ReadXML(filename);
-                observableReservations = new ObservableCollection<Reservation>(hotel.ReservationList);
-                ListBox_Reservations.ItemsSource = observableReservations;
 
-            }
-        }
-
-        private void MenuSave_Click(object sender, RoutedEventArgs e)
-        {
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-            Nullable<bool> result = dlg.ShowDialog();
-            if (result == true)
-            {
-                string filename = dlg.FileName;
-                Hotel.WriteXML(filename, hotel);
-            }
-
-        }
-
-        private void MenuClose_Click(object sender, RoutedEventArgs e)
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
     }
 }

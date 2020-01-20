@@ -20,8 +20,8 @@ namespace HotelGUI
     /// </summary>
     public partial class ReservationWindow : Window
     {
-        public Hotel hotel;
-        public Reservation reservation;
+        private Hotel hotel;
+        private Reservation reservation;
         
         public ReservationWindow()
         {

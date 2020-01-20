@@ -55,6 +55,15 @@
         <ComboBox x:Name="cb_roomType" Grid.Column="2" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
         <Button x:Name="button_filter" Content="Filter" Grid.Column="2" HorizontalAlignment="Left" Margin="366,123,0,0" VerticalAlignment="Top" Width="82" Click="Button_Filter_Click" Height="26" Background="#FF2DD38F"/>
         <Button x:Name="button_allReservations" Content="See all reservations" Grid.Column="3" HorizontalAlignment="Left" Margin="39,412,0,0" VerticalAlignment="Top" Width="191" Height="26" Click="button_allReservations_Click" Background="#FF50D1E6"/>
+        <DockPanel Grid.ColumnSpan="2" Grid.Column="3">
+            <Menu DockPanel.Dock="Top" Height="22" Margin="51,0,46,0">
+                <MenuItem Header="_Menu File" Height="22" Width="165">
+                    <MenuItem Header="_Open" Click="MenuOpen_Click"/>
+                    <MenuItem Header="_Save" Click="MenuSave_Click"/>
+                </MenuItem>
+            </Menu>
+            <StackPanel Width="260" Margin="0,-22,0,0"></StackPanel>
+        </DockPanel>
 
 
     </Grid>

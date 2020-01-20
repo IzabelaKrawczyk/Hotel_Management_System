@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace HotelSystem
 {
     [Serializable]
+    ///<summary>
+    ///Class that represents the address of the clients
+    ///</summary>
     public class Address
     {
         private string street;
@@ -27,21 +30,54 @@ namespace HotelSystem
         }
 
         public Address(string city, string postalCode, string street, string streetNumber, string flatNumber):this(city,postalCode)
-        { 
-            this.street = street;
-            this.streetNumber = streetNumber;
+        {
+            Street1 = street;
+            StreetNumber1 = streetNumber;
+            FlatNumber = flatNumber;
         }
 
         public string PostalCode { 
             get => postalCode.ToString();
             set
             {
-                 postalCode = Int32.Parse(value); 
+                string postal= string.Concat(value.Where((c) => c != '-'));
+                if (postal.Length == 5 && postal.All(Char.IsDigit))
+                    postalCode = Int32.Parse(postal);
+                else throw new ArgumentException("Wrong postal code!");
             }
         }
-        public string City { get => city; set => city = value; }
-        public string StreetNumber1 { get => streetNumber; set => streetNumber = value; }
-        public string Street1 { get => street; set => street = value; }
+        public string City 
+        { 
+            get => city;
+            set
+            {
+                if (value.All(Char.IsLetter) && Char.IsUpper(value[0]))
+                    city = value;
+                else throw new ArgumentException("Wrong city name!");
+            }
+        }
+        public string StreetNumber1 
+        { 
+            get => streetNumber; 
+            set
+            {
+                if (!value.Equals("") && value.All(Char.IsLetterOrDigit))
+                    streetNumber = value;
+                else throw new ArgumentException("Wrong street number!");
+            }
+
+        }
+        public string Street1 
+        { 
+            get => street;
+            set
+            {
+                if (!value.Equals("") && Char.IsUpper(value[0]))
+                    street = value;
+                else throw new ArgumentException("Wrong name of the street!");
+            }
+ 
+        }
         public string FlatNumber { get => flatNumber; set => flatNumber = value; }
 
         public override string ToString()

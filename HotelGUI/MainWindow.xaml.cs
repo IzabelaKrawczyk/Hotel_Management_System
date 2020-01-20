@@ -22,11 +22,11 @@ namespace HotelGUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ObservableCollection<HotelRoom> observable;
+        private ObservableCollection<HotelRoom> observable;
         public Hotel hotel = new Hotel();
-        public Client client = new Client();
-        public HotelRoom room =new HotelRoom();
-        public Address address = new Address();
+        private Client client = new Client();
+        private HotelRoom room =new HotelRoom();
+        private Address address = new Address();
 
         public Reservation reservation;
      
@@ -151,14 +151,15 @@ namespace HotelGUI
                 string checkoutdate = datepicker_checkOutDate.SelectedDate.ToString();
                 string roomType = cb_roomType.SelectedItem.ToString();
                 observable = new ObservableCollection<HotelRoom>();
+
                 for (int i = 0; i < hotel.RoomList.Count; i++)
                 {
-                    if (hotel.RoomList[i].RoomType1.Equals(roomType) && hotel.isRoomFree(checkindate, checkoutdate, hotel.RoomList[i]))
-                        observable.Add(hotel.RoomList[i]);
+                    if (hotel.RoomList[i].RoomType1.Equals(roomType))
+                        if(hotel.isRoomFree(checkindate, checkoutdate, hotel.RoomList[i]))
+                            observable.Add(hotel.RoomList[i]);
                 }
                 listbox_rooms.ItemsSource = observable;
             } 
-
             else MessageBox.Show("Select room type, check-in date, check-out date.", "Important Message");
         }
 
@@ -166,6 +167,36 @@ namespace HotelGUI
         {
             ReservationsWindow okno = new ReservationsWindow(hotel);
             okno.ShowDialog();
+        }
+        private void MenuOpen_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            bool? result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                hotel = Hotel.ReadXML(filename);
+
+                listbox_rooms.ClearValue(ItemsControl.ItemsSourceProperty);
+                observable = new ObservableCollection<HotelRoom>(hotel.RoomList);
+                listbox_rooms.ItemsSource = observable;
+            }
+
+            
+        }
+
+        private void MenuSave_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                Hotel.WriteXML(filename, hotel);
+            }
+
         }
     }
 }
