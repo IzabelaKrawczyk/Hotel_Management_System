@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelSystem
 {
@@ -47,9 +44,12 @@ namespace HotelSystem
             //hotel.AddReservation(c2, a2, "14.01.2020", "16.01.2020");
             //hotel.AddReservation(c4, a3, "17.01.2020", "18.01.2020");
 
-            Hotel.WriteXML("hotel.xml", hotel);
+            //Hotel.WriteXML("hotel.xml", hotel);
+            //Hotel h1 = new Hotel();
+            //h1=Hotel.ReadXML("hotel.xml");
 
-            //Console.WriteLine(hotel);
+            //for (int i=0; i < h1.RoomList.Count;i++)
+            //    Console.WriteLine(h1.RoomList[i]);
 
 
             Console.ReadKey();

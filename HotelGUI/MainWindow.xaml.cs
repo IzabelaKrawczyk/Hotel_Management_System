@@ -63,6 +63,8 @@ namespace HotelGUI
             cb_roomType.Text = null;
             datePicker_checkInDate.Text = null;
             datepicker_checkOutDate.Text = null;
+            observable = new ObservableCollection<HotelRoom>(hotel.RoomList);
+            listbox_rooms.ItemsSource = observable;
         }
 
         private void button_check_Click(object sender, RoutedEventArgs e)

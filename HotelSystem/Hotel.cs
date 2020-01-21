@@ -26,10 +26,6 @@ namespace HotelSystem
         /// </summary>
         public List<Client> ClientList { get => clientList; set => clientList = value; }
         /// <summary>
-        /// List of hotel rooms
-        /// </summary>
-        public List<HotelRoom> Rooms { get => RoomList; set => RoomList = value; }
-        /// <summary>
         /// Integer number of reservations
         /// </summary>
         public int ReservationsNumber { get => reservationsNumber;}
@@ -165,10 +161,10 @@ namespace HotelSystem
         /// <param name="r">hotelroom</param>
         public void removeRoom(HotelRoom r)
         {
-            if (!Rooms.Contains(r)) Console.WriteLine("There is no such a room");
+            if (!RoomList.Contains(r)) Console.WriteLine("There is no such a room");
             else
             {
-                Rooms.Remove(r);
+                RoomList.Remove(r);
                 roomsNumber--;
             }
                 
@@ -271,12 +267,10 @@ namespace HotelSystem
         /// <param name="h"></param>
         public static void WriteXML(string nazwa, Hotel h)
         {
-
             XmlSerializer serializer = new XmlSerializer(typeof(Hotel));
             StreamWriter writer = new StreamWriter(nazwa);
             serializer.Serialize(writer, h);
             writer.Close();
-
         }
         /// <summary>
         /// method that read xml file to get the hotel object 

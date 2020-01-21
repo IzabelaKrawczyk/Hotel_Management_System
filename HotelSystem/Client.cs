@@ -1,6 +1,7 @@
 ﻿using HotelSystem;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,9 +97,9 @@ namespace HotelSystem
             get => mailAddress;
             set
             {
-                if(value.Contains("@") && value.Contains("."))
+                if(new EmailAddressAttribute().IsValid(value))
                     mailAddress = value;
-                else throw new ArgumentException("Mail address is not valid!");
+                else throw new FormatException("Mail address is not valid!");
             }
         
        }

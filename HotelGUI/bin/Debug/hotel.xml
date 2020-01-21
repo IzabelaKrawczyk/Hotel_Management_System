@@ -46,6 +46,21 @@
         <FlatNumber>1000</FlatNumber>
       </Address>
     </Client>
+    <Client>
+      <LastName>Nowak</LastName>
+      <FirstName>Patryk</FirstName>
+      <DateOfBirth>15/07/1993 00:00:00</DateOfBirth>
+      <Gender1>M</Gender1>
+      <MailAddress>patryk@onet.pl</MailAddress>
+      <TelNo>898989898</TelNo>
+      <Address>
+        <PostalCode>23456</PostalCode>
+        <City>Poznań</City>
+        <StreetNumber1>45</StreetNumber1>
+        <Street1>Poznańska</Street1>
+        <FlatNumber>-</FlatNumber>
+      </Address>
+    </Client>
   </ClientList>
   <ReservationList>
     <Reservation>
@@ -121,6 +136,31 @@
         <Name>DoubleRoom1</Name>
         <RoomType1>DOUBLE</RoomType1>
         <Price>300</Price>
+      </Room>
+    </Reservation>
+    <Reservation>
+      <Client>
+        <LastName>Nowak</LastName>
+        <FirstName>Patryk</FirstName>
+        <DateOfBirth>15/07/1993 00:00:00</DateOfBirth>
+        <Gender1>M</Gender1>
+        <MailAddress>patryk@onet.pl</MailAddress>
+        <TelNo>898989898</TelNo>
+        <Address>
+          <PostalCode>23456</PostalCode>
+          <City>Poznań</City>
+          <StreetNumber1>45</StreetNumber1>
+          <Street1>Poznańska</Street1>
+          <FlatNumber>-</FlatNumber>
+        </Address>
+      </Client>
+      <CheckInDate>24/01/2020 00:00:00</CheckInDate>
+      <CheckOutDate>25/01/2020 00:00:00</CheckOutDate>
+      <ReservationPrice>150</ReservationPrice>
+      <Room>
+        <Name>SingleRoom1</Name>
+        <RoomType1>SINGLE</RoomType1>
+        <Price>150</Price>
       </Room>
     </Reservation>
   </ReservationList>

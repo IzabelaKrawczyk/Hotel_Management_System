@@ -63,7 +63,7 @@ namespace UnitTestHotelProject
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(FormatException))]
         public void TestClientWrongmailAddress()
         {
             Client c = new Client();

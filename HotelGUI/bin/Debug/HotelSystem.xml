@@ -92,11 +92,6 @@
             List of clients of hotel
             </summary>
         </member>
-        <member name="P:HotelSystem.Hotel.Rooms">
-            <summary>
-            List of hotel rooms
-            </summary>
-        </member>
         <member name="P:HotelSystem.Hotel.ReservationsNumber">
             <summary>
             Integer number of reservations
