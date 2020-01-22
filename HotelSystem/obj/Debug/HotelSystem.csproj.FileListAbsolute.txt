@@ -1,7 +1,7 @@
 C:\Users\Izabela\source\repos\HotelSystem\bin\Debug\HotelSystem.xml
 C:\Users\Izabela\source\repos\HotelSystem\bin\Debug\HotelSystem.pdb
-C:\Users\Izabela\source\repos\HotelSystem\obj\Debug\HotelSystem.csprojAssemblyReference.cache
 C:\Users\Izabela\source\repos\HotelSystem\obj\Debug\HotelSystem.pdb
 C:\Users\Izabela\source\repos\HotelSystem\bin\Debug\HotelSystem.dll.config
 C:\Users\Izabela\source\repos\HotelSystem\bin\Debug\HotelSystem.dll
 C:\Users\Izabela\source\repos\HotelSystem\obj\Debug\HotelSystem.dll
+C:\Users\Izabela\source\repos\HotelSystem\obj\Debug\HotelSystem.csprojAssemblyReference.cache

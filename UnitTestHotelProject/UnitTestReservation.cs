@@ -1,6 +1,6 @@
-﻿using System;
-using HotelSystem;
+﻿using HotelSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace UnitTestHotelProject
 {
@@ -11,7 +11,7 @@ namespace UnitTestHotelProject
         public void TestReservationcConstructor()
         {
             Reservation r = new Reservation();
-            Assert.AreEqual(1001, r.ReservationId);    
+            Assert.AreEqual(1001, r.ReservationId);
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace UnitTestHotelProject
         [ExpectedException(typeof(ArgumentException))]
         public void TestReservationWrongCheckInDate()
         {
-            Reservation r= new Reservation();
+            Reservation r = new Reservation();
             r.CheckInDate = "19/01/2020";
         }
 

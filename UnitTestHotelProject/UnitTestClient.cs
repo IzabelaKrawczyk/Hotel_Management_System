@@ -1,6 +1,6 @@
-﻿using System;
-using HotelSystem;
+﻿using HotelSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace UnitTestHotelProject
 {
@@ -26,7 +26,7 @@ namespace UnitTestHotelProject
         [ExpectedException(typeof(ArgumentException))]
         public void TestClientWrongTelNo()
         {
-            Client c= new Client();
+            Client c = new Client();
             c.TelNo = "ala";
         }
 

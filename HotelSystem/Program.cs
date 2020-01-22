@@ -12,8 +12,8 @@ namespace HotelSystem
             Address address2 = new Address("Wrocław", "20089");
 
             Client c1 = new Client("Izabela", "Krawczyk", "F", "16.06.1996", address, "iza@gmail.com", "000000000");
-            Client c2 = new Client("Anna", "Nowak", "F", "12.12.2000", address1, "annanowak@wp.pl","987654321");
-            Client c3 = new Client("Jan", "Kowalski", "M", "01/01/1987", address, "jankowalski@onet.pl","111111111");
+            Client c2 = new Client("Anna", "Nowak", "F", "12.12.2000", address1, "annanowak@wp.pl", "987654321");
+            Client c3 = new Client("Jan", "Kowalski", "M", "01/01/1987", address, "jankowalski@onet.pl", "111111111");
             Client c4 = new Client("Izabela", "Krawczyk", "F", "16.06.1996", address, "izakrawczyk@gmail.com", "100000000");
 
             HotelRoom a1 = new HotelRoom("SINGLE", "SingleRoom1", 150.0);

@@ -6,17 +6,17 @@
     <members>
         <member name="T:HotelSystem.Client.Gender">
             <summary>
-            Enum type of gender of a client
+            Types of gender of the client
             </summary>
         </member>
         <member name="P:HotelSystem.Client.LastName">
             <summary>
-            Lastname of client
+            Last name of client
             </summary>
         </member>
         <member name="P:HotelSystem.Client.FirstName">
             <summary>
-            Firstname of client
+            First name of client
             </summary>
         </member>
         <member name="P:HotelSystem.Client.DateOfBirth">
@@ -31,7 +31,7 @@
         </member>
         <member name="P:HotelSystem.Client.MailAddress">
             <summary>
-            mail addresss of client 
+            mail address of client 
             </summary>
         </member>
         <member name="P:HotelSystem.Client.TelNo">
@@ -46,7 +46,7 @@
         </member>
         <member name="M:HotelSystem.Client.#ctor">
             <summary>
-            Client constuctor
+            Client constructor
             </summary>
         </member>
         <member name="M:HotelSystem.Client.#ctor(System.String,System.String,System.String,System.String,HotelSystem.Address,System.String,System.String)">
@@ -63,7 +63,7 @@
         </member>
         <member name="M:HotelSystem.Client.Age(System.DateTime)">
             <summary>
-            Mathod that counts the age of client
+            Method that counts the age of client
             </summary>
             <param name="date"> DateTime</param>
             <returns>int age </returns>
@@ -76,10 +76,10 @@
         </member>
         <member name="M:HotelSystem.Client.Equals(HotelSystem.Client)">
             <summary>
-            Mathod equals that checks if this client is equal to other client 
+            Method equals that checks if this client is equal to other client 
             </summary>
             <param name="other"> Client</param>
-            <returns>bool true if equals</returns>
+            <returns>true if equals other client is equal to this</returns>
         </member>
         <member name="M:HotelSystem.Client.Clone">
             <summary>
@@ -90,11 +90,6 @@
         <member name="P:HotelSystem.Hotel.ClientList">
             <summary>
             List of clients of hotel
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Hotel.Rooms">
-            <summary>
-            List of hotel rooms
             </summary>
         </member>
         <member name="P:HotelSystem.Hotel.ReservationsNumber">
@@ -119,7 +114,7 @@
         </member>
         <member name="M:HotelSystem.Hotel.#ctor">
             <summary>
-            Paramterless hotel constructor
+            Parameterless hotel constructor
             </summary>
         </member>
         <member name="M:HotelSystem.Hotel.#ctor(System.Collections.Generic.List{HotelSystem.HotelRoom})">
@@ -130,7 +125,7 @@
         </member>
         <member name="M:HotelSystem.Hotel.AddReservation(HotelSystem.Client,HotelSystem.HotelRoom,System.String,System.String)">
             <summary>
-            Mathod that adds client if does not exista and the reservation to the hotel
+            Method that adds client if does not exists and the reservation to the hotel
             </summary>
             <param name="c">client</param>
             <param name="r">hotel room</param>
@@ -149,27 +144,27 @@
             </summary>
             <returns>string description of the hotel reservations</returns>
         </member>
-        <member name="M:HotelSystem.Hotel.clientTimes(HotelSystem.Client)">
+        <member name="M:HotelSystem.Hotel.ClientTimes(HotelSystem.Client)">
             <summary>
             Method that counts how many times client had reserved any rooms in the hotel 
             </summary>
             <param name="client"></param>
             <returns>int</returns>
         </member>
-        <member name="M:HotelSystem.Hotel.getReservationPrice(System.Int32)">
+        <member name="M:HotelSystem.Hotel.GetReservationPrice(System.Int32)">
             <summary>
-            Mathod that counts what is the price of the reservation
+            Method that counts what is the price of the reservation
             </summary>
             <param name="reservationId"></param>
             <returns>double</returns>
         </member>
-        <member name="M:HotelSystem.Hotel.removeRoom(HotelSystem.HotelRoom)">
+        <member name="M:HotelSystem.Hotel.RemoveRoom(HotelSystem.HotelRoom)">
             <summary>
-            Mathod that removes the room from the list of hotel rooms
+            Method that removes the room from the list of hotel rooms
             </summary>
-            <param name="r">hotelroom</param>
+            <param name="r">hotel room</param>
         </member>
-        <member name="M:HotelSystem.Hotel.removeClient(System.String,System.String,HotelSystem.Client.Gender,System.DateTime)">
+        <member name="M:HotelSystem.Hotel.RemoveClient(System.String,System.String,HotelSystem.Client.Gender,System.DateTime)">
             <summary>
             Method that removes client from the hotel system
             </summary>
@@ -178,14 +173,14 @@
             <param name="gender"></param>
             <param name="dataUrodzenia"></param>
         </member>
-        <member name="M:HotelSystem.Hotel.isRoomFree(System.String,System.String,HotelSystem.HotelRoom)">
+        <member name="M:HotelSystem.Hotel.IsRoomFree(System.String,System.String,HotelSystem.HotelRoom)">
             <summary>
-            Mathod that checks if the room is free
+            Method that checks if the room is free
             </summary>
             <param name="checkIndate"></param>
             <param name="checkOutdate"></param>
             <param name="room"></param>
-            <returns>bool</returns>
+            <returns>true if room is free</returns>
         </member>
         <member name="M:HotelSystem.Hotel.Clone">
             <summary>
@@ -197,45 +192,45 @@
             <summary>
             Deep copy of the method
             </summary>
-            <returns>hotel</returns>
+            <returns>hotel copy</returns>
         </member>
         <member name="M:HotelSystem.Hotel.WriteBIN(System.String)">
             <summary>
             MEthod that writes the hotel to binary file
             </summary>
-            <param name="nazwa"></param>
+            <param name="name">name of the file</param>
         </member>
         <member name="M:HotelSystem.Hotel.ReadBIN(System.String)">
             <summary>
-            Mathod that reads the binary file to get the hotel object
+            Method that reads the binary file to get the hotel object
             </summary>
             <param name="nazwa"></param>
             <returns>object</returns>
         </member>
         <member name="M:HotelSystem.Hotel.WriteXML(System.String,HotelSystem.Hotel)">
             <summary>
-            Mathod that writes xml file of the hotel object 
+            Method that writes XML file of the hotel object 
             </summary>
             <param name="nazwa"></param>
             <param name="h"></param>
         </member>
         <member name="M:HotelSystem.Hotel.ReadXML(System.String)">
             <summary>
-            method that read xml file to get the hotel object 
+            method that read XML file to get the hotel object 
             </summary>
             <param name="nazwa"></param>
             <returns></returns>
         </member>
         <member name="M:HotelSystem.Hotel.DeepClone(HotelSystem.Hotel)">
             <summary>
-            Method that clones deeply the hotel using binaryformatter
+            Method that clones deeply the hotel using binary formatter
             </summary>
             <param name="h"></param>
             <returns>hotel</returns>
         </member>
         <member name="T:HotelSystem.HotelRoom.RoomType">
             <summary>
-            enum that represent room type of room
+            Different types of the hotel room
             if it is a single, double, family room
             </summary>
         </member>
@@ -256,7 +251,7 @@
         </member>
         <member name="M:HotelSystem.HotelRoom.#ctor">
             <summary>
-            Parameterless contructor of the room
+            Parameterless constructor of the room
             </summary>
         </member>
         <member name="M:HotelSystem.HotelRoom.#ctor(System.String,System.String,System.Double)">
@@ -286,12 +281,12 @@
         </member>
         <member name="M:HotelSystem.Reservation.#ctor(HotelSystem.Client,HotelSystem.HotelRoom,System.String,System.String)">
             <summary>
-            Paramter constructor that sets the reservation
+            Parameter constructor that sets the reservation
             </summary>
-            <param name="client">Client</param>
-            <param name="room">Room</param>
-            <param name="checkInDate">string</param>
-            <param name="checkOutDate">stirng</param>
+            <param name="client">client</param>
+            <param name="room">hotel room </param>
+            <param name="checkInDate">string check in date</param>
+            <param name="checkOutDate">string check out date</param>
         </member>
         <member name="P:HotelSystem.Reservation.Client">
             <summary>
@@ -326,7 +321,7 @@
         </member>
         <member name="M:HotelSystem.Reservation.Clone">
             <summary>
-            Clone method of the hotelroom to object
+            Clone method of the hotel room to object
             </summary>
             <returns>object hotel room</returns>
         </member>

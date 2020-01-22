@@ -1,6 +1,6 @@
-﻿using System;
-using HotelSystem;
+﻿using HotelSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace UnitTestHotelProject
 {

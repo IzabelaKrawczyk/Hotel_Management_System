@@ -38,7 +38,7 @@
         <Label Content="Postal code" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top" Height="26" Width="75" Grid.Column="1"/>
         <Label Content="City" HorizontalAlignment="Left" Margin="99,268,0,0" VerticalAlignment="Top" Height="26" Width="120" Grid.Column="1"/>
         <Label Content="CLIENT DATA" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Background="{DynamicResource blue}" Width="408" Grid.Column="1" Height="26"/>
-        <Button x:Name="button_clear" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Margin="39,350,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="button_clear_Click"/>
+        <Button x:Name="Button_Clear" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Margin="39,350,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="Button_Clear_Click"/>
         <Label Content="Hotel room" Grid.Column="2" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="472" Height="26" Background="{DynamicResource blue}"/>
         <Label Content="Room type" Grid.Column="2" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
         <Label Content="Check-in date" Grid.Column="2" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="104" Height="26"/>
@@ -46,7 +46,7 @@
         <Label Content="Available rooms" Grid.Column="2" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="462" Background="{DynamicResource blue}" Height="26"/>
         <ListBox x:Name="listbox_rooms" Grid.Column="2" HorizontalAlignment="Left" Height="229" Margin="10,209,0,0" VerticalAlignment="Top" Width="462"/>
         <Label Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="308,451,0,0" VerticalAlignment="Top" Height="26" Width="15"/>
-        <Button x:Name="button_check" Content="Check reservation" Grid.Column="3" HorizontalAlignment="Left" Margin="39,381,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="button_check_Click"/>
+        <Button x:Name="Button_Check" Content="Check reservation" Grid.Column="3" HorizontalAlignment="Left" Margin="39,381,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="Button_Check_Click"/>
         <DatePicker x:Name="datepicker_dateofBirth" Grid.Column="1" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="182" Height="26" FirstDayOfWeek="Monday"/>
         <DatePicker x:Name="datePicker_checkInDate" Grid.Column="2" HorizontalAlignment="Left" Margin="119,76,0,0" VerticalAlignment="Top" Width="145" FirstDayOfWeek="Monday" Height="24"/>
         <DatePicker x:Name="datepicker_checkOutDate" Grid.Column="2" HorizontalAlignment="Left" Margin="119,123,0,0" VerticalAlignment="Top" Height="26" Width="145" FirstDayOfWeek="Monday"/>
@@ -54,7 +54,7 @@
         <RadioButton x:Name="radiobutton_female" Content="Female" Grid.Column="1" HorizontalAlignment="Left" Margin="342,64,0,0" VerticalAlignment="Top" Height="23" Width="57"/>
         <ComboBox x:Name="cb_roomType" Grid.Column="2" HorizontalAlignment="Left" Margin="119,41,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
         <Button x:Name="button_filter" Content="Filter" Grid.Column="2" HorizontalAlignment="Left" Margin="366,123,0,0" VerticalAlignment="Top" Width="82" Click="Button_Filter_Click" Height="26" Background="#FF2DD38F"/>
-        <Button x:Name="button_allReservations" Content="See all reservations" Grid.Column="3" HorizontalAlignment="Left" Margin="39,412,0,0" VerticalAlignment="Top" Width="191" Height="26" Click="button_allReservations_Click" Background="#FF50D1E6"/>
+        <Button x:Name="Button_AllReservations" Content="See all reservations" Grid.Column="3" HorizontalAlignment="Left" Margin="39,412,0,0" VerticalAlignment="Top" Width="191" Height="26" Click="Button_AllReservations_Click" Background="#FF50D1E6"/>
         <DockPanel Grid.ColumnSpan="2" Grid.Column="3">
             <Menu DockPanel.Dock="Top" Height="22" Margin="51,0,46,0">
                 <MenuItem Header="_Menu File" Height="22" Width="165">

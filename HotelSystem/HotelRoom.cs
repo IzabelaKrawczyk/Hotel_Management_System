@@ -1,26 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelSystem
 {
     [Serializable]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom'
+#pragma warning disable CS1587 // XML comment is not placed on a valid language element
     ///<summary>
     ///Class that represent the room of the hotel
     ///</summary>
-    public class HotelRoom: ICloneable
+    public class HotelRoom : ICloneable
+#pragma warning restore CS1587 // XML comment is not placed on a valid language element
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom'
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.FAMILY'
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.SINGLE'
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.DOUBLE'
         /// <summary>
-        /// enum that represent room type of room
+        /// Different types of the hotel room
         /// if it is a single, double, family room
         /// </summary>
         public enum RoomType { SINGLE, DOUBLE, FAMILY };
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.DOUBLE'
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.SINGLE'
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.FAMILY'
         private RoomType roomType;
         private string name;
         private double price;
-       
+
 
         /// <summary>
         /// Name of the room
@@ -29,14 +35,16 @@ namespace HotelSystem
         /// <summary>
         /// Type of room
         /// </summary>
-        public string RoomType1 { get => roomType.ToString();
-            set 
+        public string RoomType1
+        {
+            get => roomType.ToString();
+            set
             {
-                if (string.Compare(value,"SINGLE")==0 || string.Compare(value,"single")==0)
+                if (string.Compare(value, "SINGLE") == 0 || string.Compare(value, "single") == 0)
                     roomType = RoomType.SINGLE;
-                else if (string.Compare(value,"DOUBLE")==0|| string.Compare(value,"double")==0)
+                else if (string.Compare(value, "DOUBLE") == 0 || string.Compare(value, "double") == 0)
                     roomType = RoomType.DOUBLE;
-                else if (string.Compare(value,"FAMILY")==0|| string.Compare(value,"family")==0)
+                else if (string.Compare(value, "FAMILY") == 0 || string.Compare(value, "family") == 0)
                     roomType = RoomType.FAMILY;
                 else throw new ArgumentException("Wrong room type");
             }
@@ -44,8 +52,8 @@ namespace HotelSystem
         /// <summary>
         /// Price of the room of type double
         /// </summary>
-        public double Price 
-        { 
+        public double Price
+        {
             get => price;
             set
             {
@@ -56,7 +64,7 @@ namespace HotelSystem
         }
 
         /// <summary>
-        /// Parameterless contructor of the room
+        /// Parameterless constructor of the room
         /// </summary>
         public HotelRoom()
         {
@@ -71,7 +79,7 @@ namespace HotelSystem
         {
             Name = name;
             RoomType1 = roomType;
-            Price = price; 
+            Price = price;
         }
         /// <summary>
         /// Method that clones room to object

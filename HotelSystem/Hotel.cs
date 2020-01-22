@@ -4,17 +4,20 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace HotelSystem
 {
     [Serializable]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Hotel'
+#pragma warning disable CS1587 // XML comment is not placed on a valid language element
     ///<summary>
-    ///Class that represents a hotel with list of clients, rooms, and reservations
+    ///Class that represents the hotel object
     ///</summary>
-    public class Hotel: ICloneable, ISaving
+    public class Hotel : ICloneable, ISaving
+#pragma warning restore CS1587 // XML comment is not placed on a valid language element
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Hotel'
     {
         private int reservationsNumber;
         private List<Client> clientList;
@@ -28,7 +31,7 @@ namespace HotelSystem
         /// <summary>
         /// Integer number of reservations
         /// </summary>
-        public int ReservationsNumber { get => reservationsNumber;}
+        public int ReservationsNumber { get => reservationsNumber; }
         /// <summary>
         /// List of reservations
         /// </summary>
@@ -36,19 +39,19 @@ namespace HotelSystem
         /// <summary>
         /// Integer number of rooms in the hotel
         /// </summary>
-        public int RoomsNumber { get => roomsNumber;}
+        public int RoomsNumber { get => roomsNumber; }
         /// <summary>
         /// List of rooms in the hotel
         /// </summary>
         public List<HotelRoom> RoomList { get => roomList; set => roomList = value; }
         /// <summary>
-        /// Paramterless hotel constructor
+        /// Parameterless hotel constructor
         /// </summary>
         public Hotel()
         {
             reservationsNumber = 0;
             roomsNumber = 0;
-            clientList= new List<Client>();
+            clientList = new List<Client>();
             RoomList = new List<HotelRoom>();
             reservationList = new List<Reservation>();
 
@@ -57,14 +60,14 @@ namespace HotelSystem
         /// Parameter constructor of the hotel
         /// </summary>
         /// <param name="rooms"> List of HotelRoom</param>
-        public Hotel(List<HotelRoom> rooms):this()
+        public Hotel(List<HotelRoom> rooms) : this()
         {
             this.RoomList = new List<HotelRoom>(rooms);
             roomsNumber = RoomList.Count;
         }
 
         /// <summary>
-        /// Mathod that adds client if does not exista and the reservation to the hotel
+        /// Method that adds client if does not exists and the reservation to the hotel
         /// </summary>
         /// <param name="c">client</param>
         /// <param name="r">hotel room</param>
@@ -73,9 +76,9 @@ namespace HotelSystem
         public void AddReservation(Client c, HotelRoom r, string checkInDate, string checkOutDate)
         {
 
-            if (isRoomFree(checkInDate, checkOutDate, r))
+            if (IsRoomFree(checkInDate, checkOutDate, r))
             {
-                if (clientTimes(c)>=1)
+                if (ClientTimes(c) >= 1)
                 {
                     Reservation res = new Reservation(c, r, checkInDate, checkOutDate);
                     res.ReservationPrice = 0.9 * r.Price * res.HowManyNights();
@@ -100,9 +103,9 @@ namespace HotelSystem
         /// <param name="reservation"></param>
         public void AddReservation(Reservation reservation)
         {
-            if (isRoomFree(reservation.CheckInDate, reservation.CheckOutDate, reservation.Room))
+            if (IsRoomFree(reservation.CheckInDate, reservation.CheckOutDate, reservation.Room))
             {
-                if (clientTimes(reservation.Client) >= 1)
+                if (ClientTimes(reservation.Client) >= 1)
                 {
                     reservation.ReservationPrice = 0.9 * reservation.Room.Price * reservation.HowManyNights();
                     reservationList.Add(reservation);
@@ -126,7 +129,7 @@ namespace HotelSystem
         {
             StringBuilder myStringBuilder = new StringBuilder("Rezerwacje hotelu: " + Environment.NewLine);
             foreach (Reservation res in reservationList)
-                myStringBuilder.AppendLine(res?.ToString()); //odpali gdy c nie jest nullem
+                myStringBuilder.AppendLine(res?.ToString());
 
             return myStringBuilder.ToString();
         }
@@ -136,19 +139,19 @@ namespace HotelSystem
         /// </summary>
         /// <param name="client"></param>
         /// <returns>int</returns>
-        public int clientTimes(Client client)
+        public int ClientTimes(Client client)
         {
             int counter = 0;
-            foreach(Reservation res in reservationList)
-                if(res.Client==client) counter++;
+            foreach (Reservation res in reservationList)
+                if (res.Client == client) counter++;
             return counter;
         }
         /// <summary>
-        /// Mathod that counts what is the price of the reservation
+        /// Method that counts what is the price of the reservation
         /// </summary>
         /// <param name="reservationId"></param>
         /// <returns>double</returns>
-        public double getReservationPrice(int reservationId)
+        public double GetReservationPrice(int reservationId)
         {
             Reservation temp = new Reservation();
             temp = reservationList.Find(i => i.ReservationId == reservationId);
@@ -156,10 +159,10 @@ namespace HotelSystem
             return temp.ReservationPrice;
         }
         /// <summary>
-        /// Mathod that removes the room from the list of hotel rooms
+        /// Method that removes the room from the list of hotel rooms
         /// </summary>
-        /// <param name="r">hotelroom</param>
-        public void removeRoom(HotelRoom r)
+        /// <param name="r">hotel room</param>
+        public void RemoveRoom(HotelRoom r)
         {
             if (!RoomList.Contains(r)) Console.WriteLine("There is no such a room");
             else
@@ -167,7 +170,7 @@ namespace HotelSystem
                 RoomList.Remove(r);
                 roomsNumber--;
             }
-                
+
         }
         /// <summary>
         /// Method that removes client from the hotel system
@@ -176,19 +179,19 @@ namespace HotelSystem
         /// <param name="lastName"></param>
         /// <param name="gender"></param>
         /// <param name="dataUrodzenia"></param>
-        public void removeClient(string firstName, string lastName, Client.Gender gender, DateTime dataUrodzenia)
+        public void RemoveClient(string firstName, string lastName, Client.Gender gender, DateTime dataUrodzenia)
         {
-            reservationList.RemoveAll(c => c.Client.FirstName == firstName && c.Client.LastName == lastName && c.Client.Gender1 ==gender.ToString() && c.Client.DateOfBirth ==dataUrodzenia.ToString());
+            reservationList.RemoveAll(c => c.Client.FirstName == firstName && c.Client.LastName == lastName && c.Client.Gender1 == gender.ToString() && c.Client.DateOfBirth == dataUrodzenia.ToString());
             reservationsNumber = reservationList.Count;
         }
         /// <summary>
-        /// Mathod that checks if the room is free
+        /// Method that checks if the room is free
         /// </summary>
         /// <param name="checkIndate"></param>
         /// <param name="checkOutdate"></param>
         /// <param name="room"></param>
-        /// <returns>bool</returns>
-        public bool isRoomFree(string checkIndate, string checkOutdate, HotelRoom room)
+        /// <returns>true if room is free</returns>
+        public bool IsRoomFree(string checkIndate, string checkOutdate, HotelRoom room)
         {
             DateTime checkIn = DateTime.Parse(checkIndate);
             DateTime checkOut = DateTime.Parse(checkOutdate);
@@ -197,7 +200,7 @@ namespace HotelSystem
             {
                 DateTime tempIn = DateTime.Parse(r.CheckInDate);
                 DateTime tempOut = DateTime.Parse(r.CheckOutDate);
-                if (r.Room.Equals(room)) 
+                if (r.Room.Equals(room))
                 {
                     if (checkIn < tempIn && checkOut > tempOut) return false;
                     if (checkIn > tempIn && checkOut < tempOut) return false;
@@ -217,7 +220,7 @@ namespace HotelSystem
         /// <summary>
         /// Deep copy of the method
         /// </summary>
-        /// <returns>hotel</returns>
+        /// <returns>hotel copy</returns>
         public Hotel DeepCopy()
         {
             Hotel copy = new Hotel();
@@ -234,18 +237,18 @@ namespace HotelSystem
         /// <summary>
         /// MEthod that writes the hotel to binary file
         /// </summary>
-        /// <param name="nazwa"></param>
-        public void WriteBIN(string nazwa)
+        /// <param name="name">name of the file</param>
+        public void WriteBIN(string name)
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            using (Stream stream = new FileStream(nazwa, FileMode.Create))
+            using (Stream stream = new FileStream(name, FileMode.Create))
             {
                 formatter.Serialize(stream, this);
                 stream.Close();
             }
         }
         /// <summary>
-        /// Mathod that reads the binary file to get the hotel object
+        /// Method that reads the binary file to get the hotel object
         /// </summary>
         /// <param name="nazwa"></param>
         /// <returns>object</returns>
@@ -261,7 +264,7 @@ namespace HotelSystem
 
         }
         /// <summary>
-        /// Mathod that writes xml file of the hotel object 
+        /// Method that writes XML file of the hotel object 
         /// </summary>
         /// <param name="nazwa"></param>
         /// <param name="h"></param>
@@ -273,7 +276,7 @@ namespace HotelSystem
             writer.Close();
         }
         /// <summary>
-        /// method that read xml file to get the hotel object 
+        /// method that read XML file to get the hotel object 
         /// </summary>
         /// <param name="nazwa"></param>
         /// <returns></returns>
@@ -287,7 +290,7 @@ namespace HotelSystem
             return odczytany;
         }
         /// <summary>
-        /// Method that clones deeply the hotel using binaryformatter
+        /// Method that clones deeply the hotel using binary formatter
         /// </summary>
         /// <param name="h"></param>
         /// <returns>hotel</returns>

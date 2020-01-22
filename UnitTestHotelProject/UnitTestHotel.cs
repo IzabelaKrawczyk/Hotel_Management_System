@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using HotelSystem;
+﻿using HotelSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace UnitTestHotelProject
 {
     [TestClass]
     public class UnitTestHotel
     {
- 
 
 
-        
+
+
 
         [TestMethod]
         public void TestHotelConstructor()
@@ -34,7 +33,7 @@ namespace UnitTestHotelProject
             Hotel h = new Hotel(roomList);
             h.ClientList = clientList;
 
-            for (int i=0; i<3;i++)
+            for (int i = 0; i < 3; i++)
                 Assert.AreEqual(roomList[i], h.RoomList[i]);
             for (int i = 0; i < 2; i++)
                 Assert.AreEqual(clientList[i], h.ClientList[i]);
@@ -66,14 +65,14 @@ namespace UnitTestHotelProject
             Address address = new Address("Kraków", "30234");
             Client c = new Client("A", "L", "M", "15/03/1999", address, "yaay@onet.pl", "600000000");
             Reservation r = new Reservation(c, a1, "24.01.2020", "25.01.2020");
-            Reservation r1=new Reservation(c2, a1, "22.01.2020", "23.01.2020");
+            Reservation r1 = new Reservation(c2, a1, "22.01.2020", "23.01.2020");
             h.AddReservation(r);
             h.AddReservation(c2, a1, "22.01.2020", "23.01.2020");
             Assert.AreEqual(h.ReservationList[0].ToString(), r.ToString());
             Assert.AreEqual(h.ReservationList[1].ToString(), r1.ToString());
 
-            
+
         }
 
-    } 
+    }
 }

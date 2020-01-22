@@ -12,7 +12,7 @@
         <TextBox x:Name="textbox_client" HorizontalAlignment="Left" Height="57" Margin="88,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375"/>
         <TextBlock x:Name="textblock_Reservation" HorizontalAlignment="Left" Height="113" Margin="88,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375"/>
         <Button x:Name="button_save" Content="Save" HorizontalAlignment="Left" Height="27" Margin="0,171,0,0" VerticalAlignment="Top" Width="68" Click="Button_Save"/>
-        <Button x:Name="button_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="0,203,0,0" VerticalAlignment="Top" Width="68" Height="27" IsCancel="True" Click="button_cancel_Click"/>
+        <Button x:Name="button_cancel" Content="Cancel" HorizontalAlignment="Left" Margin="0,203,0,0" VerticalAlignment="Top" Width="68" Height="27" IsCancel="True" Click="Button_Cancel_Click"/>
 
     </Grid>
 </Window>
