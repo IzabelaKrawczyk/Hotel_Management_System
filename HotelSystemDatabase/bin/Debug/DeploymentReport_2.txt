@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Address] (Table)
+       [dbo].[Client] (Table)
+       [dbo].[HotelRoom] (Table)
+       [dbo].[Reservation] (Table)
+       Foreign Key: unnamed constraint on [dbo].[Client] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Reservation] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Reservation] (Foreign Key)
+
+** Supporting actions

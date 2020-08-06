@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Address] (Table)
+       [dbo].[Client] (Table)
+       [dbo].[HotelRoom] (Table)
+       [dbo].[Reservation] (Table)
+       [dbo].[FK_Address] (Foreign Key)
+       [dbo].[FK_Client] (Foreign Key)
+       [dbo].[FK_Room] (Foreign Key)
+
+** Supporting actions
