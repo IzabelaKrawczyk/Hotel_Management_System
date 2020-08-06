@@ -4,14 +4,83 @@
         <name>HotelSystem</name>
     </assembly>
     <members>
+        <member name="F:HotelSystem.Address.ID">
+             <summary>
+            Static global id in a purpose to auto increment the address id value.
+             </summary>
+        </member>
+        <member name="M:HotelSystem.Address.#ctor">
+             <summary>
+            Parameterless constructor of the address
+             </summary>
+        </member>
+        <member name="M:HotelSystem.Address.#ctor(System.String,System.String)">
+             <summary>
+            Constructor of the address with two parameters: city and postal code
+             </summary>
+             <param name="city"> string</param>
+             <param name="postalCode">string</param>
+        </member>
+        <member name="M:HotelSystem.Address.#ctor(System.String,System.String,System.String,System.String,System.String)">
+             <summary>
+            Constructor of the address with 5 parameters: city, postal code, street name, street number and flat number
+             </summary>
+             <param name="city"> string</param>
+             <param name="postalCode">string</param>
+             <param name="street">string</param>
+             <param name="streetNumber"> string</param>
+             <param name="flatNumber">string</param>
+        </member>
+        <member name="P:HotelSystem.Address.AddressID1">
+             <summary>
+            Getter and setter of  AddressID
+             </summary>
+        </member>
+        <member name="P:HotelSystem.Address.Street1">
+             <summary>
+            Getter and setter of Street
+             </summary>
+        </member>
+        <member name="P:HotelSystem.Address.StreetNumber1">
+             <summary>
+            Getter and setter of StreetNumber
+             </summary>
+        </member>
+        <member name="P:HotelSystem.Address.FlatNumber">
+             <summary>
+            Getter and setter of flatNumber
+             </summary>
+        </member>
+        <member name="P:HotelSystem.Address.City">
+             <summary>
+            Getter and setter of city 
+             </summary>
+        </member>
+        <member name="P:HotelSystem.Address.PostalCode">
+             <summary>
+            Getter and setter of postalCode
+             </summary>
+        </member>
+        <member name="M:HotelSystem.Address.ToString">
+             <summary>
+            ToString() overridden method
+             </summary>
+        </member>
         <member name="T:HotelSystem.Client.Gender">
             <summary>
-            Types of gender of the client
+            Types of gender of the client: F- female, M- male
+            </summary>
+            <param tag="F">0</param>
+            <param tag="M">1</param>
+        </member>
+        <member name="F:HotelSystem.Client.id">
+            <summary>
+            Static int id used in creation of incremental clientId
             </summary>
         </member>
-        <member name="P:HotelSystem.Client.LastName">
+        <member name="P:HotelSystem.Client.ClientId">
             <summary>
-            Last name of client
+            Id of the client.
             </summary>
         </member>
         <member name="P:HotelSystem.Client.FirstName">
@@ -19,14 +88,24 @@
             First name of client
             </summary>
         </member>
-        <member name="P:HotelSystem.Client.DateOfBirth">
+        <member name="P:HotelSystem.Client.LastName">
             <summary>
-            Date of birth of client
+            Last name of client
             </summary>
         </member>
         <member name="P:HotelSystem.Client.Gender1">
             <summary>
             Client gender
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Client.DateOfBirth">
+            <summary>
+            Date of birth of client
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Client.Address">
+            <summary>
+            Address of the client
             </summary>
         </member>
         <member name="P:HotelSystem.Client.MailAddress">
@@ -37,11 +116,6 @@
         <member name="P:HotelSystem.Client.TelNo">
             <summary>
             Telephone number of client
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Client.Address">
-            <summary>
-            Address of the client
             </summary>
         </member>
         <member name="M:HotelSystem.Client.#ctor">
@@ -87,19 +161,14 @@
             </summary>
             <returns>object client</returns>
         </member>
-        <member name="P:HotelSystem.Hotel.ClientList">
-            <summary>
-            List of clients of hotel
-            </summary>
-        </member>
         <member name="P:HotelSystem.Hotel.ReservationsNumber">
             <summary>
             Integer number of reservations
             </summary>
         </member>
-        <member name="P:HotelSystem.Hotel.ReservationList">
+        <member name="P:HotelSystem.Hotel.ClientList">
             <summary>
-            List of reservations
+            List of clients of hotel
             </summary>
         </member>
         <member name="P:HotelSystem.Hotel.RoomsNumber">
@@ -110,6 +179,11 @@
         <member name="P:HotelSystem.Hotel.RoomList">
             <summary>
             List of rooms in the hotel
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Hotel.ReservationList">
+            <summary>
+            List of reservations
             </summary>
         </member>
         <member name="M:HotelSystem.Hotel.#ctor">
@@ -233,6 +307,32 @@
             Different types of the hotel room
             if it is a single, double, family room
             </summary>
+            <param tag="SINGLE">0</param>
+            <param tag="DOUBLE">1</param>
+            <param tag="FAMILY ">2</param>
+        </member>
+        <member name="F:HotelSystem.HotelRoom.id">
+             <summary>
+            Global static id used in creation of incremental roomID.
+             </summary>
+        </member>
+        <member name="M:HotelSystem.HotelRoom.#ctor">
+            <summary>
+            Parameterless constructor of the room
+            </summary>
+        </member>
+        <member name="M:HotelSystem.HotelRoom.#ctor(System.String,System.String,System.Double)">
+            <summary>
+            Constructor of the room
+            </summary>
+            <param name="roomType"> string</param>
+            <param name="name">string</param>
+            <param name="price">string</param>
+        </member>
+        <member name="P:HotelSystem.HotelRoom.RoomID">
+            <summary>
+            Id of the room
+            </summary>
         </member>
         <member name="P:HotelSystem.HotelRoom.Name">
             <summary>
@@ -249,19 +349,6 @@
             Price of the room of type double
             </summary>
         </member>
-        <member name="M:HotelSystem.HotelRoom.#ctor">
-            <summary>
-            Parameterless constructor of the room
-            </summary>
-        </member>
-        <member name="M:HotelSystem.HotelRoom.#ctor(System.String,System.String,System.Double)">
-            <summary>
-            Constructor of the room
-            </summary>
-            <param name="roomType"> string</param>
-            <param name="name">string</param>
-            <param name="price">string</param>
-        </member>
         <member name="M:HotelSystem.HotelRoom.Clone">
             <summary>
             Method that clones room to object
@@ -273,6 +360,11 @@
             Overridden ToString method 
             </summary>
             <returns>string room description</returns>
+        </member>
+        <member name="F:HotelSystem.Reservation.Id">
+            <summary>
+            Public static id used in creating incremental reservationId
+            </summary>
         </member>
         <member name="M:HotelSystem.Reservation.#ctor">
             <summary>
@@ -288,29 +380,34 @@
             <param name="checkInDate">string check in date</param>
             <param name="checkOutDate">string check out date</param>
         </member>
-        <member name="P:HotelSystem.Reservation.Client">
-            <summary>
-            Client that want to make reservation
-            </summary>
-        </member>
         <member name="P:HotelSystem.Reservation.ReservationId">
             <summary>
-            Id of reservation (int)
+            reservation?Id getter ad setter
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.Client">
+            <summary>
+            Client getter and setter
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.Room">
+            <summary>
+            room getter and setter
             </summary>
         </member>
         <member name="P:HotelSystem.Reservation.CheckInDate">
             <summary>
-            Check-in date of client visit in hotel (string) 
+            checkInDate getter and setter 
             </summary>
         </member>
         <member name="P:HotelSystem.Reservation.CheckOutDate">
-            <summary>
-            Check-out date of client visit in hotel (string)  
-            </summary>
+             <summary>
+            checkOutDate getter and setter 
+             </summary>
         </member>
         <member name="P:HotelSystem.Reservation.ReservationPrice">
             <summary>
-            Reservation price (double)
+            reservation getter and setter
             </summary>
         </member>
         <member name="M:HotelSystem.Reservation.HowManyNights">

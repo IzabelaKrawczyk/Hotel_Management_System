@@ -8,6 +8,9 @@ namespace UnitTestHotelProject
     public class UnitTestReservation
     {
         [TestMethod]
+        /// <summary>
+        ///Test to check if the reservation constructor works well. 
+        /// </summary>
         public void TestReservationcConstructor()
         {
             Reservation r = new Reservation();
@@ -15,6 +18,9 @@ namespace UnitTestHotelProject
         }
 
         [TestMethod]
+        /// <summary>
+        ///Test for creating the reservation with the parameter constructor.
+        /// </summary>
         public void TestReservationcParameterConstructor()
         {
             Address address = new Address("Kraków", "30234");
@@ -29,6 +35,9 @@ namespace UnitTestHotelProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        /// <summary>
+        ///Test for creating the reservation where the wrong check-in date is set. 
+        /// </summary>
         public void TestReservationWrongCheckInDate()
         {
             Reservation r = new Reservation();
@@ -37,6 +46,9 @@ namespace UnitTestHotelProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
+        /// <summary>
+        ///Test for creating the reservation where the wrong check-out date is set. 
+        /// </summary>
         public void TestReservationWrongCheckOutDate()
         {
             Reservation r = new Reservation();

@@ -16,3 +16,4 @@ C:\Users\Izabela\source\repos\UnitTestHotelProject\obj\Debug\UnitTestHotelProjec
 C:\Users\Izabela\source\repos\UnitTestHotelProject\obj\Debug\UnitTestHotelProject.dll
 C:\Users\Izabela\source\repos\UnitTestHotelProject\obj\Debug\UnitTestHotelProject.pdb
 C:\Users\Izabela\source\repos\UnitTestHotelProject\bin\Debug\UnitTestHotelProject.xml
+C:\Users\Izabela\source\repos\UnitTestHotelProject\obj\Debug\UnitTestHotelProject.csproj.CoreCompileInputs.cache

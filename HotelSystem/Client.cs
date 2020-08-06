@@ -1,29 +1,31 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace HotelSystem
 {
     [Serializable]
-#pragma warning disable CS1587 // XML comment is not placed on a valid language element
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Client'
     ///<summary>
-    ///Client class that represent the client of the hotel
+    ///Client class that represent the client of the hotel.
     ///</summary>
     public class Client : IEquatable<Client>, ICloneable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Client'
-#pragma warning restore CS1587 // XML comment is not placed on a valid language element
     {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Client.Gender.M'
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Client.Gender.F'
-        /// <summary>
-        /// Types of gender of the client
-        /// </summary>
-        public enum Gender { F, M };
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Client.Gender.F'
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Client.Gender.M'
 
-        #region properties
+        /// <summary>
+        /// Types of gender of the client: F- female, M- male
+        /// </summary>
+        /// <param tag="F">0</param>
+        /// <param tag="M">1</param>
+        public enum Gender { F, M };
+
+        #region fields
+        /// <summary>
+        /// Static int id used in creation of incremental clientId
+        /// </summary>
+        public static int id;
+        private int clientId;
         private string firstName;
         private string lastName;
         private Gender gender;
@@ -31,10 +33,28 @@ namespace HotelSystem
         private Address address;
         private string mailAddress;
         private string telNo;
-
-
-
         #endregion
+
+        #region properties
+        /// <summary>
+        /// Id of the client.
+        /// </summary>
+        public int ClientId { get => clientId; set => clientId = value; }
+
+        /// <summary>
+        /// First name of client
+        /// </summary>
+        public string FirstName
+        {
+            get => firstName;
+            set
+            {
+                if (value.All(Char.IsLetter))
+                    firstName = value;
+                else throw new ArgumentException("Not valid first name!");
+            }
+        }
+
         /// <summary>
         /// Last name of client
         /// </summary>
@@ -49,34 +69,7 @@ namespace HotelSystem
             }
 
         }
-        /// <summary>
-        /// First name of client
-        /// </summary>
-        public string FirstName
-        {
-            get => firstName;
-            set
-            {
-                if (value.All(Char.IsLetter))
-                    firstName = value;
-                else throw new ArgumentException("Not valid first name!");
-            }
-        }
-        /// <summary>
-        /// Date of birth of client
-        /// </summary>
-        public string DateOfBirth
-        {
-            get => dateOfBirth.ToString();
 
-            set
-            {
-                DateTime d = DateTime.Parse(value);
-                if (Age(d) >= 18)
-                    dateOfBirth = d;
-                else throw new ArgumentException("Client to young to make a reservation.");
-            }
-        }
         /// <summary>
         /// Client gender
         /// </summary>
@@ -94,6 +87,28 @@ namespace HotelSystem
                 else throw new ArgumentException("Gender is only F or M.");
             }
         }
+
+        /// <summary>
+        /// Date of birth of client
+        /// </summary>
+        public string DateOfBirth
+        {
+            get => dateOfBirth.ToString();
+
+            set
+            {
+                DateTime d = DateTime.Parse(value);
+                if (Age(d) >= 18)
+                    dateOfBirth = d;
+                else throw new ArgumentException("Client too young to make a reservation.");
+            }
+        }
+
+        /// <summary>
+        /// Address of the client
+        /// </summary>
+        public Address Address { get => address; set => address = value; }
+
         /// <summary>
         /// mail address of client 
         /// </summary>
@@ -102,9 +117,11 @@ namespace HotelSystem
             get => mailAddress;
             set
             {
-                if (new EmailAddressAttribute().IsValid(value))
+                Regex regEmail;
+                regEmail = new Regex(@"^[a-z][a-z0-9_]*@[a-z0-9]*\.[a-z]{2,3}$");
+                if (new EmailAddressAttribute().IsValid(value) &&regEmail.IsMatch(value))
                     mailAddress = value;
-                else throw new FormatException("Mail address is not valid!");
+                else throw new FormatException("Wrong email address!");
             }
 
         }
@@ -121,11 +138,7 @@ namespace HotelSystem
                 else throw new ArgumentException("Wrong telephone number");
             }
         }
-        /// <summary>
-        /// Address of the client
-        /// </summary>
-        public Address Address { get => address; set => address = value; }
-
+        #endregion
 
         #region constructors
         /// <summary>
@@ -133,7 +146,9 @@ namespace HotelSystem
         /// </summary>
         public Client()
         {
-            firstName = "";
+            id++;
+            ClientId = Interlocked.Increment(ref id);
+             firstName = "";
             lastName = "";
             DateOfBirth = "01/01/1989";
 
@@ -150,6 +165,8 @@ namespace HotelSystem
         /// <param name="telNo"></param>
         public Client(string firstName, string lastName, string gender, string dateofbirth, Address address, string mailAddress, string telNo)
         {
+            id++;
+            ClientId = Interlocked.Increment(ref id);
             DateOfBirth = dateofbirth;
             Gender1 = gender;
             FirstName = firstName;
@@ -159,30 +176,31 @@ namespace HotelSystem
             TelNo = telNo;
 
         }
-
         #endregion
 
-
+        #region methods
         /// <summary>
         /// Method that counts the age of client
         /// </summary>
         /// <param name="date"> DateTime</param>
         /// <returns>int age </returns>
-        public int Age(DateTime date)
+        public static int Age(DateTime date)
         {
             int age = DateTime.Now.Year - date.Year;
             if (DateTime.Now.DayOfYear < date.DayOfYear)
-                age = age - 1;
+                age -= 1;
             return age;
         }
+
         /// <summary>
         /// Overridden ToString method
         /// </summary>
         /// <returns>string</returns>
         public override string ToString()
         {
-            return "Client: " + FirstName + " " + LastName + " " + DateOfBirth + " " + Gender1 + " " + MailAddress + " " + TelNo;
+            return "Client: "+ClientId+ " " + FirstName + " " + LastName + " " + DateOfBirth + " " + Gender1 + " " + MailAddress + " " + TelNo;
         }
+
         /// <summary>
         /// Method equals that checks if this client is equal to other client 
         /// </summary>
@@ -194,6 +212,7 @@ namespace HotelSystem
                 return false;
             return this.FirstName == other.FirstName && this.LastName == other.LastName && this.DateOfBirth == other.DateOfBirth && this.Gender1 == other.Gender1 && this.Address == other.Address;
         }
+
         /// <summary>
         /// Clone method of client
         /// </summary>
@@ -202,6 +221,7 @@ namespace HotelSystem
         {
             return this.MemberwiseClone() as Client;
         }
+        #endregion
     }
 
 

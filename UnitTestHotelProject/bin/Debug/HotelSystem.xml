@@ -6,7 +6,7 @@
     <members>
         <member name="T:HotelSystem.Client.Gender">
             <summary>
-            Types of gender of the client
+            Types of gender of the client: F- female, M- male
             </summary>
         </member>
         <member name="P:HotelSystem.Client.LastName">

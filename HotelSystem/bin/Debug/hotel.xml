@@ -1,52 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Hotel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ClientList />
-  <ReservationList />
+  <ClientList>
+    <Client>
+      <ClientId>1</ClientId>
+      <FirstName>Izabela</FirstName>
+      <LastName>Krawczyk</LastName>
+      <Gender1>F</Gender1>
+      <DateOfBirth>16/06/1996 00:00:00</DateOfBirth>
+      <Address>
+        <AddressID1>1</AddressID1>
+        <Street1>W. Budryka</Street1>
+        <StreetNumber1>9</StreetNumber1>
+        <FlatNumber>427</FlatNumber>
+        <City>Kraków</City>
+        <PostalCode>30456</PostalCode>
+      </Address>
+      <MailAddress>iza@gmail.com</MailAddress>
+      <TelNo>000000000</TelNo>
+    </Client>
+    <Client>
+      <ClientId>2</ClientId>
+      <FirstName>Anna</FirstName>
+      <LastName>Nowak</LastName>
+      <Gender1>F</Gender1>
+      <DateOfBirth>12/12/2000 00:00:00</DateOfBirth>
+      <Address>
+        <AddressID1>2</AddressID1>
+        <Street1>J. Piłsudzkiego</Street1>
+        <StreetNumber1>12D</StreetNumber1>
+        <FlatNumber>87</FlatNumber>
+        <City>Warszawa</City>
+        <PostalCode>10564</PostalCode>
+      </Address>
+      <MailAddress>annanowak@wp.pl</MailAddress>
+      <TelNo>987654321</TelNo>
+    </Client>
+    <Client>
+      <ClientId>4</ClientId>
+      <FirstName>Izabela</FirstName>
+      <LastName>Krawczyk</LastName>
+      <Gender1>F</Gender1>
+      <DateOfBirth>16/06/1996 00:00:00</DateOfBirth>
+      <Address>
+        <AddressID1>1</AddressID1>
+        <Street1>W. Budryka</Street1>
+        <StreetNumber1>9</StreetNumber1>
+        <FlatNumber>427</FlatNumber>
+        <City>Kraków</City>
+        <PostalCode>30456</PostalCode>
+      </Address>
+      <MailAddress>izakrawczyk@gmail.com</MailAddress>
+      <TelNo>100000000</TelNo>
+    </Client>
+  </ClientList>
   <RoomList>
     <HotelRoom>
+      <RoomID>1</RoomID>
       <Name>SingleRoom1</Name>
       <RoomType1>SINGLE</RoomType1>
       <Price>150</Price>
     </HotelRoom>
     <HotelRoom>
+      <RoomID>2</RoomID>
       <Name>DoubleRoom1</Name>
       <RoomType1>DOUBLE</RoomType1>
       <Price>300</Price>
     </HotelRoom>
     <HotelRoom>
+      <RoomID>3</RoomID>
       <Name>FamilyRoom1</Name>
       <RoomType1>FAMILY</RoomType1>
       <Price>500</Price>
     </HotelRoom>
     <HotelRoom>
+      <RoomID>4</RoomID>
       <Name>SingleRoom2</Name>
       <RoomType1>SINGLE</RoomType1>
       <Price>150</Price>
     </HotelRoom>
     <HotelRoom>
+      <RoomID>5</RoomID>
       <Name>DoubleRoom2</Name>
       <RoomType1>DOUBLE</RoomType1>
       <Price>300</Price>
     </HotelRoom>
     <HotelRoom>
+      <RoomID>6</RoomID>
       <Name>SingleRoom3</Name>
       <RoomType1>SINGLE</RoomType1>
       <Price>150</Price>
     </HotelRoom>
     <HotelRoom>
+      <RoomID>7</RoomID>
       <Name>SingleRoom4</Name>
       <RoomType1>SINGLE</RoomType1>
       <Price>150</Price>
     </HotelRoom>
     <HotelRoom>
+      <RoomID>8</RoomID>
       <Name>DoubleRoom3</Name>
       <RoomType1>DOUBLE</RoomType1>
       <Price>300</Price>
     </HotelRoom>
     <HotelRoom>
+      <RoomID>9</RoomID>
       <Name>FamilyRoom2</Name>
       <RoomType1>FAMILY</RoomType1>
       <Price>500</Price>
     </HotelRoom>
   </RoomList>
+  <ReservationList>
+    <Reservation>
+      <ReservationId>1</ReservationId>
+      <Client>
+        <ClientId>1</ClientId>
+        <FirstName>Izabela</FirstName>
+        <LastName>Krawczyk</LastName>
+        <Gender1>F</Gender1>
+        <DateOfBirth>16/06/1996 00:00:00</DateOfBirth>
+        <Address>
+          <AddressID1>1</AddressID1>
+          <Street1>W. Budryka</Street1>
+          <StreetNumber1>9</StreetNumber1>
+          <FlatNumber>427</FlatNumber>
+          <City>Kraków</City>
+          <PostalCode>30456</PostalCode>
+        </Address>
+        <MailAddress>iza@gmail.com</MailAddress>
+        <TelNo>000000000</TelNo>
+      </Client>
+      <Room>
+        <RoomID>1</RoomID>
+        <Name>SingleRoom1</Name>
+        <RoomType1>SINGLE</RoomType1>
+        <Price>150</Price>
+      </Room>
+      <CheckInDate>11/01/2020 00:00:00</CheckInDate>
+      <CheckOutDate>13/01/2020 00:00:00</CheckOutDate>
+      <ReservationPrice>300</ReservationPrice>
+    </Reservation>
+    <Reservation>
+      <ReservationId>2</ReservationId>
+      <Client>
+        <ClientId>2</ClientId>
+        <FirstName>Anna</FirstName>
+        <LastName>Nowak</LastName>
+        <Gender1>F</Gender1>
+        <DateOfBirth>12/12/2000 00:00:00</DateOfBirth>
+        <Address>
+          <AddressID1>2</AddressID1>
+          <Street1>J. Piłsudzkiego</Street1>
+          <StreetNumber1>12D</StreetNumber1>
+          <FlatNumber>87</FlatNumber>
+          <City>Warszawa</City>
+          <PostalCode>10564</PostalCode>
+        </Address>
+        <MailAddress>annanowak@wp.pl</MailAddress>
+        <TelNo>987654321</TelNo>
+      </Client>
+      <Room>
+        <RoomID>2</RoomID>
+        <Name>DoubleRoom1</Name>
+        <RoomType1>DOUBLE</RoomType1>
+        <Price>300</Price>
+      </Room>
+      <CheckInDate>14/01/2020 00:00:00</CheckInDate>
+      <CheckOutDate>16/01/2020 00:00:00</CheckOutDate>
+      <ReservationPrice>600</ReservationPrice>
+    </Reservation>
+    <Reservation>
+      <ReservationId>3</ReservationId>
+      <Client>
+        <ClientId>4</ClientId>
+        <FirstName>Izabela</FirstName>
+        <LastName>Krawczyk</LastName>
+        <Gender1>F</Gender1>
+        <DateOfBirth>16/06/1996 00:00:00</DateOfBirth>
+        <Address>
+          <AddressID1>1</AddressID1>
+          <Street1>W. Budryka</Street1>
+          <StreetNumber1>9</StreetNumber1>
+          <FlatNumber>427</FlatNumber>
+          <City>Kraków</City>
+          <PostalCode>30456</PostalCode>
+        </Address>
+        <MailAddress>izakrawczyk@gmail.com</MailAddress>
+        <TelNo>100000000</TelNo>
+      </Client>
+      <Room>
+        <RoomID>3</RoomID>
+        <Name>FamilyRoom1</Name>
+        <RoomType1>FAMILY</RoomType1>
+        <Price>500</Price>
+      </Room>
+      <CheckInDate>17/01/2020 00:00:00</CheckInDate>
+      <CheckOutDate>18/01/2020 00:00:00</CheckOutDate>
+      <ReservationPrice>500</ReservationPrice>
+    </Reservation>
+  </ReservationList>
 </Hotel>

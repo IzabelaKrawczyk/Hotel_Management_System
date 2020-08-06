@@ -1,6 +1,7 @@
 ﻿using HotelSystem;
 using System;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -21,8 +22,8 @@ namespace HotelGUI
             InitializeComponent();
             observable = new ObservableCollection<HotelRoom>(hotel.RoomList);
             listbox_rooms.ItemsSource = observable;
-            ComboBox comboBox = new ComboBox();
-            comboBox = cb_roomType;
+            _ = new ComboBox();
+            ComboBox comboBox = cb_roomType;
             comboBox.Items.Add("SINGLE");
             comboBox.Items.Add("DOUBLE");
             comboBox.Items.Add("FAMILY");
@@ -56,76 +57,76 @@ namespace HotelGUI
             Address address = new Address();
             Client client = new Client();
             string temp = textBox_firstName.Text;
-            if (temp == null)
-                MessageBox.Show("First name is null", "Important Message");
-            else
-                client.FirstName = temp;
+            try 
+            { client.FirstName = temp; }
+            catch (ArgumentException)
+            { MessageBox.Show("Wrong first name!", "Important Message"); }
+                   
 
             temp = textBox_lastName.Text;
-            if (temp == null)
-                MessageBox.Show("Last name is null", "Important Message");
-            else
-                client.LastName = temp;
+            try 
+            { client.LastName = temp; }
+            catch(ArgumentException)
+            { MessageBox.Show("Wrong last name!", "Important Message"); }
+
 
             if (radiobutton_male == null && radiobutton_female == null)
-                MessageBox.Show("Select gender", "Important Message");
-            else
-                client.Gender1 = (bool)radiobutton_male.IsChecked ? "M" : "F";
+            MessageBox.Show("Select gender", "Important Message");
+               client.Gender1 = (bool)radiobutton_male.IsChecked ? "M" : "F";                 
 
-
-            if (datepicker_dateofBirth.SelectedDate == null)
-                MessageBox.Show("Date of birth is not selected", "Important Message");
-            else
-                client.DateOfBirth = datepicker_dateofBirth.SelectedDate.ToString();
+           try
+           { client.DateOfBirth = datepicker_dateofBirth.SelectedDate.ToString(); }
+           catch (Exception)
+           { MessageBox.Show("You are to young!", "Important Message"); }
 
             temp = textBox_telNo.Text;
-            if (temp == null)
-                MessageBox.Show("Telephone number is null", "Important Message");
-            else
-                client.TelNo = temp;
+            try 
+            { client.TelNo = temp; }
+            catch (Exception)
+            { MessageBox.Show("Wrong telephone number!", "Important Message"); }
 
             temp = textBox_mail.Text;
-            if (temp == null)
-                MessageBox.Show("Email address is null", "Important Message");
-            else
-                client.MailAddress = temp;
+            try
+            { client.MailAddress = temp; }
+            catch (Exception)
+            { MessageBox.Show("Wrong e-mail address", "Important Message"); }
 
             temp = textBox_street.Text;
-            if (temp == null)
-                MessageBox.Show("Street name is null", "Important Message");
-            else
-                address.Street1 = temp;
+            try 
+            { address.Street1 = temp; }
+            catch (Exception) 
+            { MessageBox.Show("Wrong street name ", "Important Message"); }
 
             temp = textBox_streetNumber.Text;
-            if (temp == null)
-                MessageBox.Show("Street number is null", "Important Message");
-            else
-                address.StreetNumber1 = temp;
+            try 
+            { address.StreetNumber1 = temp; }
+            catch(Exception)
+            { MessageBox.Show("Wrong street number!", "Important Message"); }
 
             temp = textBox_flatNumber.Text;
             address.FlatNumber = temp;
 
             temp = textBox_postalCode.Text;
-            if (temp == null)
-                MessageBox.Show("Postal code is null", "Important Message");
-            else
-                address.PostalCode = temp;
+            try 
+            { address.PostalCode = temp; }
+            catch(Exception)
+            { MessageBox.Show("Wrong postal code!", "Important Message"); }
 
             temp = textBox_city.Text;
-            if (temp == null)
-                MessageBox.Show("City name is null", "Important Message");
-            else
-                address.City = temp;
+            try { address.City = temp; }
+            catch (Exception)
+            { MessageBox.Show("Wrong city name!", "Important Message"); }
 
             client.Address = address;
 
             room.RoomType1 = cb_roomType.Text;
-            var roomData = listbox_rooms.SelectedItem.ToString().Split(' ');
-            room.Name = roomData[1];
-            room.Price = Double.Parse(roomData[3]);
+            string[] roomData = listbox_rooms.SelectedItem.ToString().Split(' ');
+            room.RoomID = Int32.Parse(roomData[2]);
+            room.Name = roomData[3]; 
+            room.Price = Double.Parse(roomData[5]);
 
             reservation = new Reservation(client, room, datePicker_checkInDate.SelectedDate.ToString(), datepicker_checkOutDate.SelectedDate.ToString());
-
+            
             ReservationWindow reservationWindow = new ReservationWindow(reservation, hotel);
             reservationWindow.ShowDialog();
         }

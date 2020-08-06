@@ -1,37 +1,68 @@
 ﻿using System;
+using System.Threading;
 
 namespace HotelSystem
 {
     [Serializable]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom'
-#pragma warning disable CS1587 // XML comment is not placed on a valid language element
     ///<summary>
     ///Class that represent the room of the hotel
     ///</summary>
     public class HotelRoom : ICloneable
-#pragma warning restore CS1587 // XML comment is not placed on a valid language element
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom'
     {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.FAMILY'
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.SINGLE'
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.DOUBLE'
+
         /// <summary>
         /// Different types of the hotel room
         /// if it is a single, double, family room
         /// </summary>
+        /// <param tag="SINGLE">0</param>
+        /// <param tag="DOUBLE">1</param>
+        /// <param tag="FAMILY ">2</param>
         public enum RoomType { SINGLE, DOUBLE, FAMILY };
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.DOUBLE'
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.SINGLE'
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.FAMILY'
-        private RoomType roomType;
-        private string name;
-        private double price;
 
+        #region fields
+        /// <summary>
+        ///Global static id used in creation of incremental roomID.
+        /// </summary>
+        public static int id;
+        private int roomID;
+        private string name;
+        private RoomType roomType;
+        private double price;
+        #endregion
+
+        #region constructors
+        /// <summary>
+        /// Parameterless constructor of the room
+        /// </summary>
+        public HotelRoom()
+        {
+            RoomID = Interlocked.Increment(ref id);
+        }
+        /// <summary>
+        /// Constructor of the room
+        /// </summary>
+        /// <param name="roomType"> string</param>
+        /// <param name="name">string</param>
+        /// <param name="price">string</param>
+        public HotelRoom(string roomType, string name, double price):this()
+        {
+            Name = name;
+            RoomType1 = roomType;
+            Price = price;
+        }
+        #endregion
+
+        #region properties
+        /// <summary>
+        /// Id of the room
+        /// </summary>
+        public int RoomID { get => roomID; set => roomID = value; }
 
         /// <summary>
         /// Name of the room
         /// </summary>
         public string Name { get => name; set => name = value; }
+
         /// <summary>
         /// Type of room
         /// </summary>
@@ -49,6 +80,7 @@ namespace HotelSystem
                 else throw new ArgumentException("Wrong room type");
             }
         }
+
         /// <summary>
         /// Price of the room of type double
         /// </summary>
@@ -62,25 +94,9 @@ namespace HotelSystem
                 else throw new ArgumentException("Nothings for free!");
             }
         }
+        #endregion
 
-        /// <summary>
-        /// Parameterless constructor of the room
-        /// </summary>
-        public HotelRoom()
-        {
-        }
-        /// <summary>
-        /// Constructor of the room
-        /// </summary>
-        /// <param name="roomType"> string</param>
-        /// <param name="name">string</param>
-        /// <param name="price">string</param>
-        public HotelRoom(string roomType, string name, double price)
-        {
-            Name = name;
-            RoomType1 = roomType;
-            Price = price;
-        }
+       
         /// <summary>
         /// Method that clones room to object
         /// </summary>
@@ -95,8 +111,7 @@ namespace HotelSystem
         /// <returns>string room description</returns>
         public override string ToString()
         {
-            string value = "Room: ";
-            value += Name + " ";
+            string value = "Room id: "+ RoomID+ " "+ Name + " ";
             value += RoomType1 + " ";
             value += Price;
             return value;

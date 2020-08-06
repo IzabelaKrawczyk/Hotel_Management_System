@@ -67,7 +67,7 @@ namespace UnitTestHotelProject
         public void TestClientWrongmailAddress()
         {
             Client c = new Client();
-            c.MailAddress = "test.pl";
+            c.MailAddress = "@test12.pl";
         }
 
     }

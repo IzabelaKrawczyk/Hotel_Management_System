@@ -10,40 +10,49 @@ using System.Xml.Serialization;
 namespace HotelSystem
 {
     [Serializable]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Hotel'
-#pragma warning disable CS1587 // XML comment is not placed on a valid language element
+
     ///<summary>
     ///Class that represents the hotel object
     ///</summary>
     public class Hotel : ICloneable, ISaving
-#pragma warning restore CS1587 // XML comment is not placed on a valid language element
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Hotel'
+
     {
+        #region fields
         private int reservationsNumber;
         private List<Client> clientList;
+        private int roomsNumber;
         private List<HotelRoom> roomList;
         private List<Reservation> reservationList;
-        private int roomsNumber;
-        /// <summary>
-        /// List of clients of hotel
-        /// </summary>
-        public List<Client> ClientList { get => clientList; set => clientList = value; }
+        #endregion
+
+        #region properties
         /// <summary>
         /// Integer number of reservations
         /// </summary>
         public int ReservationsNumber { get => reservationsNumber; }
+
         /// <summary>
-        /// List of reservations
+        /// List of clients of hotel
         /// </summary>
-        public List<Reservation> ReservationList { get => reservationList; set => reservationList = value; }
+        public List<Client> ClientList { get => clientList; set => clientList = value; }
+
         /// <summary>
         /// Integer number of rooms in the hotel
         /// </summary>
         public int RoomsNumber { get => roomsNumber; }
+
         /// <summary>
         /// List of rooms in the hotel
         /// </summary>
         public List<HotelRoom> RoomList { get => roomList; set => roomList = value; }
+
+        /// <summary>
+        /// List of reservations
+        /// </summary>
+        public List<Reservation> ReservationList { get => reservationList; set => reservationList = value; }
+        #endregion
+
+        #region constructors
         /// <summary>
         /// Parameterless hotel constructor
         /// </summary>
@@ -65,7 +74,9 @@ namespace HotelSystem
             this.RoomList = new List<HotelRoom>(rooms);
             roomsNumber = RoomList.Count;
         }
+        #endregion
 
+        #region methods
         /// <summary>
         /// Method that adds client if does not exists and the reservation to the hotel
         /// </summary>
@@ -97,6 +108,7 @@ namespace HotelSystem
             else throw new Exception("Room is not free or it doesn't exist.");
 
         }
+
         /// <summary>
         /// Method that adds reservation to hotel system
         /// </summary>
@@ -121,13 +133,14 @@ namespace HotelSystem
             }
             else throw new Exception("Room is not free or it doesn't exist.");
         }
+
         /// <summary>
         /// Overridden ToString method
         /// </summary>
         /// <returns>string description of the hotel reservations</returns>
         public override string ToString()
         {
-            StringBuilder myStringBuilder = new StringBuilder("Rezerwacje hotelu: " + Environment.NewLine);
+            StringBuilder myStringBuilder = new StringBuilder("Reservations: " + Environment.NewLine);
             foreach (Reservation res in reservationList)
                 myStringBuilder.AppendLine(res?.ToString());
 
@@ -146,6 +159,7 @@ namespace HotelSystem
                 if (res.Client == client) counter++;
             return counter;
         }
+
         /// <summary>
         /// Method that counts what is the price of the reservation
         /// </summary>
@@ -158,6 +172,7 @@ namespace HotelSystem
 
             return temp.ReservationPrice;
         }
+
         /// <summary>
         /// Method that removes the room from the list of hotel rooms
         /// </summary>
@@ -172,6 +187,7 @@ namespace HotelSystem
             }
 
         }
+
         /// <summary>
         /// Method that removes client from the hotel system
         /// </summary>
@@ -184,6 +200,7 @@ namespace HotelSystem
             reservationList.RemoveAll(c => c.Client.FirstName == firstName && c.Client.LastName == lastName && c.Client.Gender1 == gender.ToString() && c.Client.DateOfBirth == dataUrodzenia.ToString());
             reservationsNumber = reservationList.Count;
         }
+
         /// <summary>
         /// Method that checks if the room is free
         /// </summary>
@@ -209,6 +226,7 @@ namespace HotelSystem
             }
             return true;
         }
+
         /// <summary>
         /// Method that clones the hotel object
         /// </summary>
@@ -217,6 +235,7 @@ namespace HotelSystem
         {
             return this.MemberwiseClone();
         }
+
         /// <summary>
         /// Deep copy of the method
         /// </summary>
@@ -234,6 +253,7 @@ namespace HotelSystem
             copy.roomsNumber = RoomList.Count;
             return copy;
         }
+
         /// <summary>
         /// MEthod that writes the hotel to binary file
         /// </summary>
@@ -247,6 +267,7 @@ namespace HotelSystem
                 stream.Close();
             }
         }
+
         /// <summary>
         /// Method that reads the binary file to get the hotel object
         /// </summary>
@@ -263,6 +284,7 @@ namespace HotelSystem
             return wynik;
 
         }
+
         /// <summary>
         /// Method that writes XML file of the hotel object 
         /// </summary>
@@ -275,6 +297,7 @@ namespace HotelSystem
             serializer.Serialize(writer, h);
             writer.Close();
         }
+
         /// <summary>
         /// method that read XML file to get the hotel object 
         /// </summary>
@@ -289,6 +312,7 @@ namespace HotelSystem
             fs.Close();
             return odczytany;
         }
+
         /// <summary>
         /// Method that clones deeply the hotel using binary formatter
         /// </summary>
@@ -306,8 +330,7 @@ namespace HotelSystem
                 return (Hotel)formatter.Deserialize(ms);
             }
         }
-
-
+        #endregion
 
     }
 }
