@@ -9,9 +9,12 @@ namespace HotelGUI
     /// </summary>
     public partial class ReservationsWindow : Window
     {
-        private Hotel hotel;
-        private ObservableCollection<Reservation> observableReservations;
-
+        private readonly Hotel hotel;
+        private readonly ObservableCollection<Reservation> observableReservations;
+        /// <summary>
+        /// Constructor of the reservations window that shows all the reservations of the hotel. 
+        /// </summary>
+        /// <param name="hotel"></param>
         public ReservationsWindow(Hotel hotel)
         {
             InitializeComponent();
@@ -20,7 +23,6 @@ namespace HotelGUI
             ListBox_Reservations.ItemsSource = observableReservations;
 
         }
-
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {

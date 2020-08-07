@@ -87,34 +87,39 @@
             </summary>
             <returns>object client</returns>
         </member>
-        <member name="P:HotelSystem.Hotel.ClientList">
+        <member name="T:HotelSystem.Hotel">
             <summary>
-            List of clients of hotel
+            Class that represents the hotel object.
             </summary>
         </member>
         <member name="P:HotelSystem.Hotel.ReservationsNumber">
             <summary>
-            Integer number of reservations
+            The reservationNumber getter and setter.
             </summary>
         </member>
-        <member name="P:HotelSystem.Hotel.ReservationList">
+        <member name="P:HotelSystem.Hotel.ClientList">
             <summary>
-            List of reservations
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Hotel.RoomsNumber">
-            <summary>
-            Integer number of rooms in the hotel
+            The clientList getter and setter. 
             </summary>
         </member>
         <member name="P:HotelSystem.Hotel.RoomList">
             <summary>
-            List of rooms in the hotel
+            The roomList getter and setter. 
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Hotel.ReservationList">
+            <summary>
+            The reservationList getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Hotel.RoomsNumber">
+            <summary>
+            The roomNumber getter and private setter.
             </summary>
         </member>
         <member name="M:HotelSystem.Hotel.#ctor">
             <summary>
-            Parameterless hotel constructor
+            Parameterless hotel constructor that sets initial values.
             </summary>
         </member>
         <member name="M:HotelSystem.Hotel.#ctor(System.Collections.Generic.List{HotelSystem.HotelRoom})">
@@ -166,7 +171,7 @@
         </member>
         <member name="M:HotelSystem.Hotel.RemoveClient(System.String,System.String,HotelSystem.Client.Gender,System.DateTime)">
             <summary>
-            Method that removes client from the hotel system
+            Method that removes the client from the hotel system
             </summary>
             <param name="firstName"></param>
             <param name="lastName"></param>
@@ -190,13 +195,13 @@
         </member>
         <member name="M:HotelSystem.Hotel.DeepCopy">
             <summary>
-            Deep copy of the method
+            Deep copy of the hotel method
             </summary>
             <returns>hotel copy</returns>
         </member>
         <member name="M:HotelSystem.Hotel.WriteBIN(System.String)">
             <summary>
-            MEthod that writes the hotel to binary file
+            Method that writes the hotel to binary file
             </summary>
             <param name="name">name of the file</param>
         </member>
@@ -274,9 +279,49 @@
             </summary>
             <returns>string room description</returns>
         </member>
+        <member name="T:HotelSystem.Reservation">
+            <summary>
+            Reservation class that represents reservation in the hotel
+            </summary>
+        </member>
+        <member name="F:HotelSystem.Reservation.nextID">
+            <summary>
+            Static int nextID to set auto incremental reservation id.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.ReservationId">
+            <summary>
+            ReservationId getter and setter
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.Client">
+            <summary>
+            The client getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.Room">
+            <summary>
+            The room getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.CheckInDate">
+            <summary>
+            The checkInDate getter and setter 
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.CheckOutDate">
+            <summary>
+            The checkOutDate getter and setter
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.ReservationPrice">
+            <summary>
+            The reservationPrice getter and setter
+            </summary>
+        </member>
         <member name="M:HotelSystem.Reservation.#ctor">
             <summary>
-            PArameterless reservation constructor that sets the id of reservation
+            Parameterless reservation constructor that sets the id of reservation
             </summary>
         </member>
         <member name="M:HotelSystem.Reservation.#ctor(HotelSystem.Client,HotelSystem.HotelRoom,System.String,System.String)">
@@ -287,31 +332,6 @@
             <param name="room">hotel room </param>
             <param name="checkInDate">string check in date</param>
             <param name="checkOutDate">string check out date</param>
-        </member>
-        <member name="P:HotelSystem.Reservation.Client">
-            <summary>
-            Client that want to make reservation
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Reservation.ReservationId">
-            <summary>
-            Id of reservation (int)
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Reservation.CheckInDate">
-            <summary>
-            Check-in date of client visit in hotel (string) 
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Reservation.CheckOutDate">
-            <summary>
-            Check-out date of client visit in hotel (string)  
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Reservation.ReservationPrice">
-            <summary>
-            Reservation price (double)
-            </summary>
         </member>
         <member name="M:HotelSystem.Reservation.HowManyNights">
             <summary>

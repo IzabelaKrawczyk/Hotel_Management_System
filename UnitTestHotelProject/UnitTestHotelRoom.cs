@@ -4,9 +4,15 @@ using System;
 
 namespace UnitTestHotelProject
 {
+    /// <summary>
+    /// Unit tests of the HotelRoom class.
+    /// </summary>
     [TestClass]
     public class UnitTestHotelRoom
     {
+        /// <summary>
+        /// The test of the HotelRoom parameter constructor.
+        /// </summary>
         [TestMethod]
         public void TestRoomConstructor()
         {
@@ -16,20 +22,30 @@ namespace UnitTestHotelProject
             Assert.AreEqual(567.55, h.Price);
         }
 
+        /// <summary>
+        /// The test of the roomType setter, that throws ArgumentException when the value is different from "SINGLE", "DOUBLE", and "FAMILY".
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestRoomWrongRoomType()
         {
-            HotelRoom h = new HotelRoom();
-            h.RoomType1 = "one";
+            _ = new HotelRoom
+            {
+                RoomType1 = "one"
+            };
         }
 
+        /// <summary>
+        /// The test of the price setter that throws ArgumentException when value is negative.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestRoomWrongRoomPrice()
         {
-            HotelRoom h = new HotelRoom();
-            h.Price = -12.45;
+            _ = new HotelRoom
+            {
+                Price = -12.45
+            };
         }
     }
 }

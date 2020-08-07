@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HotelGUI"
         mc:Ignorable="d"
-        Title="Hotel Management System" Height="487.105" Width="1161.314" ShowInTaskbar="False">
+        Title="Hotel Management System" Height="505" Width="1161" ShowInTaskbar="False">
     <Window.Resources>
         <SolidColorBrush x:Key="blue" Color="#FFDDF2FF"/>
     </Window.Resources>
-    <Grid Margin="-17,0,0,0">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="23*"/>
             <ColumnDefinition Width="413*"/>
@@ -38,7 +38,7 @@
         <Label Content="Postal code" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top" Height="26" Width="75" Grid.Column="1"/>
         <Label Content="City" HorizontalAlignment="Left" Margin="99,268,0,0" VerticalAlignment="Top" Height="26" Width="120" Grid.Column="1"/>
         <Label Content="CLIENT DATA" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Background="{DynamicResource blue}" Width="408" Grid.Column="1" Height="26"/>
-        <Button x:Name="Button_Clear" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Margin="39,350,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="Button_Clear_Click"/>
+        <Button x:Name="Button_Clear" Content="Clear" Grid.Column="3" HorizontalAlignment="Left" Margin="39,350,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="Button_Clear_Click" RenderTransformOrigin="0.466,2.404"/>
         <Label Content="Hotel room" Grid.Column="2" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="472" Height="26" Background="{DynamicResource blue}"/>
         <Label Content="Room type" Grid.Column="2" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="109" Height="26"/>
         <Label Content="Check-in date" Grid.Column="2" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top" Width="104" Height="26"/>
@@ -46,7 +46,7 @@
         <Label Content="Available rooms" Grid.Column="2" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="462" Background="{DynamicResource blue}" Height="26"/>
         <ListBox x:Name="listbox_rooms" Grid.Column="2" HorizontalAlignment="Left" Height="229" Margin="10,209,0,0" VerticalAlignment="Top" Width="462"/>
         <Label Content="-" Grid.Column="2" HorizontalAlignment="Left" Margin="308,451,0,0" VerticalAlignment="Top" Height="26" Width="15"/>
-        <Button x:Name="Button_Check" Content="Check reservation" Grid.Column="3" HorizontalAlignment="Left" Margin="39,381,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="Button_Check_Click"/>
+        <Button x:Name="Button_Check" Content="Check reservation" Grid.Column="3" HorizontalAlignment="Left" Margin="39,381,0,0" VerticalAlignment="Top" Width="191" Height="26" Background="#FF2B82D8" Click="Button_Check_Click" RenderTransformOrigin="0.497,-1.538"/>
         <DatePicker x:Name="datepicker_dateofBirth" Grid.Column="1" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Width="182" Height="26" FirstDayOfWeek="Monday"/>
         <DatePicker x:Name="datePicker_checkInDate" Grid.Column="2" HorizontalAlignment="Left" Margin="119,76,0,0" VerticalAlignment="Top" Width="145" FirstDayOfWeek="Monday" Height="24"/>
         <DatePicker x:Name="datepicker_checkOutDate" Grid.Column="2" HorizontalAlignment="Left" Margin="119,123,0,0" VerticalAlignment="Top" Height="26" Width="145" FirstDayOfWeek="Monday"/>
@@ -60,9 +60,10 @@
                 <MenuItem Header="_Menu File" Height="22" Width="165">
                     <MenuItem Header="_Open" Click="MenuOpen_Click"/>
                     <MenuItem Header="_Save" Click="MenuSave_Click"/>
+                    <MenuItem Header="_Database" Click="MenuDatabase_Clik"/>
                 </MenuItem>
             </Menu>
-            <StackPanel Width="260" Margin="0,-22,0,0"></StackPanel>
+            <StackPanel Width="260" Margin="0,-22,0,0"/>
         </DockPanel>
 
 

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace HotelGUI
 {
     /// <summary>
@@ -12,17 +13,26 @@ namespace HotelGUI
     public partial class MainWindow : Window
     {
         private ObservableCollection<HotelRoom> observable;
+        /// <summary>
+        /// The hotel that is managed. 
+        /// </summary>
         public Hotel hotel = new Hotel();
+        /// <summary>
+        /// The reservation that is created.
+        /// </summary>
         public Reservation reservation;
 
+        /// <summary>
+        /// Main window of the hotel GUI that is based on XML serialization. It is a possibility to move to the database form. 
+        /// </summary>
         public MainWindow()
         {
             hotel = Hotel.ReadXML("hotel.xml");
             InitializeComponent();
             observable = new ObservableCollection<HotelRoom>(hotel.RoomList);
             listbox_rooms.ItemsSource = observable;
-            ComboBox comboBox = new ComboBox();
-            comboBox = cb_roomType;
+            _ = new ComboBox();
+            ComboBox comboBox = cb_roomType;
             comboBox.Items.Add("SINGLE");
             comboBox.Items.Add("DOUBLE");
             comboBox.Items.Add("FAMILY");
@@ -55,81 +65,81 @@ namespace HotelGUI
             HotelRoom room = new HotelRoom();
             Address address = new Address();
             Client client = new Client();
+
             string temp = textBox_firstName.Text;
-            if (temp == null)
-                MessageBox.Show("First name is null", "Important Message");
-            else
-                client.FirstName = temp;
+            try { client.FirstName = temp; }
+            catch (ArgumentException ex) { MessageBox.Show(ex.Message, "Important Message"); }
 
             temp = textBox_lastName.Text;
-            if (temp == null)
-                MessageBox.Show("Last name is null", "Important Message");
-            else
-                client.LastName = temp;
+            try { client.LastName = temp; }
+            catch (ArgumentException ex) 
+            { 
+                MessageBox.Show(ex.Message, "Important Message");
+            }
+                
 
             if (radiobutton_male == null && radiobutton_female == null)
                 MessageBox.Show("Select gender", "Important Message");
             else
                 client.Gender1 = (bool)radiobutton_male.IsChecked ? "M" : "F";
 
-
-            if (datepicker_dateofBirth.SelectedDate == null)
-                MessageBox.Show("Date of birth is not selected", "Important Message");
-            else
-                client.DateOfBirth = datepicker_dateofBirth.SelectedDate.ToString();
+            try { client.DateOfBirth = datepicker_dateofBirth.SelectedDate.ToString(); }
+            catch(ArgumentException ex){ MessageBox.Show(ex.Message, "Important Message"); }
+            catch (FormatException ex) { MessageBox.Show(ex.Message, "Important Message"); }
+        
 
             temp = textBox_telNo.Text;
-            if (temp == null)
-                MessageBox.Show("Telephone number is null", "Important Message");
-            else
-                client.TelNo = temp;
+            try { client.TelNo = temp; } 
+            catch(ArgumentException ex) { MessageBox.Show(ex.Message, "Important Message"); } 
 
             temp = textBox_mail.Text;
-            if (temp == null)
-                MessageBox.Show("Email address is null", "Important Message");
-            else
-                client.MailAddress = temp;
+            try { client.MailAddress = temp; }
+            catch (ArgumentException ex) { MessageBox.Show(ex.Message, "Important Message"); }
+            catch (FormatException ex) { MessageBox.Show(ex.Message, "Important Message"); }
 
             temp = textBox_street.Text;
-            if (temp == null)
-                MessageBox.Show("Street name is null", "Important Message");
-            else
-                address.Street1 = temp;
+            try { address.Street1 = temp; }
+            catch (ArgumentException ex) { MessageBox.Show(ex.Message, "Important Message"); }
 
             temp = textBox_streetNumber.Text;
-            if (temp == null)
-                MessageBox.Show("Street number is null", "Important Message");
-            else
-                address.StreetNumber1 = temp;
+            try { address.StreetNumber1 = temp; }
+            catch (ArgumentException ex) { MessageBox.Show(ex.Message, "Important Message"); }
 
             temp = textBox_flatNumber.Text;
             address.FlatNumber = temp;
 
             temp = textBox_postalCode.Text;
-            if (temp == null)
-                MessageBox.Show("Postal code is null", "Important Message");
-            else
-                address.PostalCode = temp;
-
+            try { address.PostalCode = temp; }
+            catch (ArgumentException ex) { MessageBox.Show(ex.Message, "Important Message"); }
+                
             temp = textBox_city.Text;
-            if (temp == null)
-                MessageBox.Show("City name is null", "Important Message");
-            else
-                address.City = temp;
+            try { address.City = temp; }
+            catch (ArgumentException ex) { MessageBox.Show(ex.Message, "Important Message"); }
+            catch (IndexOutOfRangeException ex) { MessageBox.Show(ex.Message, "Important Message"); }
 
             client.Address = address;
 
-            room.RoomType1 = cb_roomType.Text;
-            var roomData = listbox_rooms.SelectedItem.ToString().Split(' ');
-            room.Name = roomData[1];
-            room.Price = Double.Parse(roomData[3]);
 
-            reservation = new Reservation(client, room, datePicker_checkInDate.SelectedDate.ToString(), datepicker_checkOutDate.SelectedDate.ToString());
+            try { room.RoomType1 = cb_roomType.Text; }
+            catch (ArgumentException ex) { MessageBox.Show(ex.Message, "Important Message"); }
+            try 
+            { 
+                var roomData = listbox_rooms.SelectedItem.ToString().Split(' ');
+                room.Name = roomData[0];
+                room.Price = Double.Parse(roomData[2]);
+            }
+            catch (NullReferenceException ex) { MessageBox.Show(ex.Message, "Important Message"); }
 
-            ReservationWindow reservationWindow = new ReservationWindow(reservation, hotel);
-            reservationWindow.ShowDialog();
+            try 
+            {
+                reservation = new Reservation(client, room, datePicker_checkInDate.SelectedDate.ToString(), datepicker_checkOutDate.SelectedDate.ToString());
+                ReservationWindow reservationWindow = new ReservationWindow(reservation, hotel);
+                reservationWindow.ShowDialog();
+            }
+            catch (FormatException ex) { MessageBox.Show(ex.Message, "Important Message"); }
+
+            
         }
-
 
         private void Button_Filter_Click(object sender, RoutedEventArgs e)
         {
@@ -185,6 +195,12 @@ namespace HotelGUI
                 Hotel.WriteXML(filename, hotel);
             }
 
+        }
+
+        private void MenuDatabase_Clik(object sender, RoutedEventArgs e)
+        {
+            HotelDatabase okno = new HotelDatabase();
+            okno.ShowDialog();
         }
     }
 }

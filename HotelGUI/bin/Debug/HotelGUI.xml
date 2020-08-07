@@ -4,6 +4,98 @@
         <name>HotelGUI</name>
     </assembly>
     <members>
+        <member name="T:HotelGUI.HotelDatabase">
+            <summary>
+            The form of the database with reservations of the hotel 
+            </summary>
+        </member>
+        <member name="M:HotelGUI.HotelDatabase.#ctor">
+            <summary>
+            Constructor of the window HotelDatabase
+            </summary>
+        </member>
+        <member name="F:HotelGUI.HotelDatabase.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:HotelGUI.HotelDatabase.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:HotelGUI.HotelDatabase.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:HotelGUI.HotelReservationDatabaseDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:HotelGUI.HotelReservationDatabaseDataSet.HotelReservationTableDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:HotelGUI.HotelReservationDatabaseDataSet.HotelReservationTableRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:HotelGUI.HotelReservationDatabaseDataSet.HotelReservationTableRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.HotelReservationTableTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.TableAdapterManager">
+             <summary>
+            TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+            </summary>
+        </member>
+        <member name="M:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(HotelGUI.HotelReservationDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Update rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(HotelGUI.HotelReservationDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Insert rows in top-down order.
+            </summary>
+        </member>
+        <member name="M:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(HotelGUI.HotelReservationDatabaseDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Delete rows in bottom-up order.
+            </summary>
+        </member>
+        <member name="M:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+             <summary>
+            Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+            </summary>
+        </member>
+        <member name="M:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.TableAdapterManager.UpdateAll(HotelGUI.HotelReservationDatabaseDataSet)">
+             <summary>
+            Update all changes to the dataset.
+            </summary>
+        </member>
+        <member name="T:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+             <summary>
+            Update Order Option
+            </summary>
+        </member>
+        <member name="T:HotelGUI.HotelReservationDatabaseDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+             <summary>
+            Used to sort self-referenced table's rows
+            </summary>
+        </member>
         <member name="T:HotelGUI.ReservationsWindow">
             <summary>
             Interaction logic for ReservationsWindow.xaml
@@ -11,6 +103,12 @@
             <summary>
             ReservationsWindow
             </summary>
+        </member>
+        <member name="M:HotelGUI.ReservationsWindow.#ctor(HotelSystem.Hotel)">
+            <summary>
+            Constructor of the reservations window that shows all the reservations of the hotel. 
+            </summary>
+            <param name="hotel"></param>
         </member>
         <member name="M:HotelGUI.ReservationsWindow.InitializeComponent">
             <summary>
@@ -24,6 +122,18 @@
             <summary>
             ReservationWindow
             </summary>
+        </member>
+        <member name="M:HotelGUI.ReservationWindow.#ctor">
+            <summary>
+            The constructor of the reservation window.
+            </summary>
+        </member>
+        <member name="M:HotelGUI.ReservationWindow.#ctor(HotelSystem.Reservation,HotelSystem.Hotel)">
+            <summary>
+            The constructor of the reservation window that shows reservation made in MainWindow.
+            </summary>
+            <param name="reservation"></param>
+            <param name="hotel"></param>
         </member>
         <member name="M:HotelGUI.ReservationWindow.InitializeComponent">
             <summary>
@@ -54,6 +164,21 @@
             </summary>
             <summary>
             MainWindow
+            </summary>
+        </member>
+        <member name="F:HotelGUI.MainWindow.hotel">
+            <summary>
+            The hotel that is managed. 
+            </summary>
+        </member>
+        <member name="F:HotelGUI.MainWindow.reservation">
+            <summary>
+            The reservation that is created.
+            </summary>
+        </member>
+        <member name="M:HotelGUI.MainWindow.#ctor">
+            <summary>
+            Main window of the hotel GUI that is based on XML serialization. It is a possibility to move to the database form. 
             </summary>
         </member>
         <member name="M:HotelGUI.MainWindow.InitializeComponent">

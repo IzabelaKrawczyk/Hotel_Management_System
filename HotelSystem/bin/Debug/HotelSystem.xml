@@ -4,44 +4,113 @@
         <name>HotelSystem</name>
     </assembly>
     <members>
+        <member name="T:HotelSystem.Address">
+            <summary>
+            Class that represents the address of the clients
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Address.Street1">
+            <summary>
+            The street name getter and setter. 
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Address.StreetNumber1">
+            <summary>
+            The streetNumber getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Address.FlatNumber">
+            <summary>
+            The flatNumber getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Address.City">
+            <summary>
+            The city getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Address.PostalCode">
+            <summary>
+            The postalCode getter and setter.
+            </summary>
+        </member>
+        <member name="M:HotelSystem.Address.#ctor">
+            <summary>
+            The parameterless constructor of the address.
+            </summary>
+        </member>
+        <member name="M:HotelSystem.Address.#ctor(System.String,System.String)">
+            <summary>
+            The parameter constructor of the address.
+            </summary>
+            <param name="city"></param>
+            <param name="postalCode"></param>
+        </member>
+        <member name="M:HotelSystem.Address.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            The parameter constructor of the address.
+            </summary>
+            <param name="city"></param>
+            <param name="postalCode"></param>
+            <param name="street"></param>
+            <param name="streetNumber"></param>
+            <param name="flatNumber"></param>
+        </member>
+        <member name="M:HotelSystem.Address.ToString">
+            <summary>
+            The overridden ToString method
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="T:HotelSystem.Client">
+            <summary>
+            Client class that represent the client of the hotel
+            </summary>
+        </member>
         <member name="T:HotelSystem.Client.Gender">
             <summary>
             Types of gender of the client
             </summary>
         </member>
-        <member name="P:HotelSystem.Client.LastName">
-            <summary>
-            Last name of client
-            </summary>
+        <member name="F:HotelSystem.Client.Gender.F">
+            <summary> F means female, has int value 0 </summary>
+        </member>
+        <member name="F:HotelSystem.Client.Gender.M">
+            <summary> M means male, has int value 1 </summary>
         </member>
         <member name="P:HotelSystem.Client.FirstName">
             <summary>
-            First name of client
+            The first name getter and setter.
             </summary>
         </member>
-        <member name="P:HotelSystem.Client.DateOfBirth">
+        <member name="P:HotelSystem.Client.LastName">
             <summary>
-            Date of birth of client
+            The last name getter and setter.
             </summary>
         </member>
         <member name="P:HotelSystem.Client.Gender1">
             <summary>
-            Client gender
+            The gender getter and setter.
             </summary>
+        </member>
+        <member name="P:HotelSystem.Client.DateOfBirth">
+            <summary>
+            The date of birth getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Client.Address">
+             <summary>
+            The address getter and setter.
+             </summary>
         </member>
         <member name="P:HotelSystem.Client.MailAddress">
             <summary>
-            mail address of client 
+            The mail address getter and setter.
             </summary>
         </member>
         <member name="P:HotelSystem.Client.TelNo">
             <summary>
-            Telephone number of client
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Client.Address">
-            <summary>
-            Address of the client
+            The telephone number getter and setter.
             </summary>
         </member>
         <member name="M:HotelSystem.Client.#ctor">
@@ -87,34 +156,39 @@
             </summary>
             <returns>object client</returns>
         </member>
-        <member name="P:HotelSystem.Hotel.ClientList">
+        <member name="T:HotelSystem.Hotel">
             <summary>
-            List of clients of hotel
+            Class that represents the hotel object.
             </summary>
         </member>
         <member name="P:HotelSystem.Hotel.ReservationsNumber">
             <summary>
-            Integer number of reservations
+            The reservationNumber getter and setter.
             </summary>
         </member>
-        <member name="P:HotelSystem.Hotel.ReservationList">
+        <member name="P:HotelSystem.Hotel.ClientList">
             <summary>
-            List of reservations
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Hotel.RoomsNumber">
-            <summary>
-            Integer number of rooms in the hotel
+            The clientList getter and setter. 
             </summary>
         </member>
         <member name="P:HotelSystem.Hotel.RoomList">
             <summary>
-            List of rooms in the hotel
+            The roomList getter and setter. 
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Hotel.ReservationList">
+            <summary>
+            The reservationList getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Hotel.RoomsNumber">
+            <summary>
+            The roomNumber getter and private setter.
             </summary>
         </member>
         <member name="M:HotelSystem.Hotel.#ctor">
             <summary>
-            Parameterless hotel constructor
+            Parameterless hotel constructor that sets initial values.
             </summary>
         </member>
         <member name="M:HotelSystem.Hotel.#ctor(System.Collections.Generic.List{HotelSystem.HotelRoom})">
@@ -166,7 +240,7 @@
         </member>
         <member name="M:HotelSystem.Hotel.RemoveClient(System.String,System.String,HotelSystem.Client.Gender,System.DateTime)">
             <summary>
-            Method that removes client from the hotel system
+            Method that removes the client from the hotel system
             </summary>
             <param name="firstName"></param>
             <param name="lastName"></param>
@@ -190,13 +264,13 @@
         </member>
         <member name="M:HotelSystem.Hotel.DeepCopy">
             <summary>
-            Deep copy of the method
+            Deep copy of the hotel method
             </summary>
             <returns>hotel copy</returns>
         </member>
         <member name="M:HotelSystem.Hotel.WriteBIN(System.String)">
             <summary>
-            MEthod that writes the hotel to binary file
+            Method that writes the hotel to binary file
             </summary>
             <param name="name">name of the file</param>
         </member>
@@ -228,35 +302,48 @@
             <param name="h"></param>
             <returns>hotel</returns>
         </member>
+        <member name="T:HotelSystem.HotelRoom">
+            <summary>
+            The class that represent the room of the hotel.
+            </summary>
+        </member>
         <member name="T:HotelSystem.HotelRoom.RoomType">
             <summary>
-            Different types of the hotel room
-            if it is a single, double, family room
+            The enumeration type that represents different types of the hotel room.
+            </summary>
+        </member>
+        <member name="F:HotelSystem.HotelRoom.RoomType.SINGLE">
+            <summary>room for a person </summary>
+        </member>
+        <member name="F:HotelSystem.HotelRoom.RoomType.DOUBLE">
+            <summary>room for two people </summary>
+        </member>
+        <member name="F:HotelSystem.HotelRoom.RoomType.FAMILY">
+            <summary>room for a family </summary>
+        </member>
+        <member name="P:HotelSystem.HotelRoom.RoomType1">
+            <summary>
+            The type of room getter and setter.
             </summary>
         </member>
         <member name="P:HotelSystem.HotelRoom.Name">
             <summary>
-            Name of the room
-            </summary>
-        </member>
-        <member name="P:HotelSystem.HotelRoom.RoomType1">
-            <summary>
-            Type of room
+            The name of the room getter and setter.
             </summary>
         </member>
         <member name="P:HotelSystem.HotelRoom.Price">
             <summary>
-            Price of the room of type double
+            The price of the room getter and setter.
             </summary>
         </member>
         <member name="M:HotelSystem.HotelRoom.#ctor">
             <summary>
-            Parameterless constructor of the room
+            The parameterless constructor of the HotelRoom
             </summary>
         </member>
         <member name="M:HotelSystem.HotelRoom.#ctor(System.String,System.String,System.Double)">
             <summary>
-            Constructor of the room
+            The parameter constructor of the HotelRoom
             </summary>
             <param name="roomType"> string</param>
             <param name="name">string</param>
@@ -264,70 +351,85 @@
         </member>
         <member name="M:HotelSystem.HotelRoom.Clone">
             <summary>
-            Method that clones room to object
+            The method that clones room to object.
             </summary>
             <returns> object </returns>
         </member>
         <member name="M:HotelSystem.HotelRoom.ToString">
             <summary>
-            Overridden ToString method 
+            The overridden ToString method. 
             </summary>
             <returns>string room description</returns>
         </member>
+        <member name="T:HotelSystem.Reservation">
+            <summary>
+            Reservation class that represents reservation in the hotel
+            </summary>
+        </member>
+        <member name="F:HotelSystem.Reservation.nextID">
+            <summary>
+            The static int nextID to set auto incremental reservation id.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.ReservationId">
+            <summary>
+            The reservation id getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.Client">
+            <summary>
+            The client getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.Room">
+            <summary>
+            The room getter and setter.
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.CheckInDate">
+            <summary>
+            The check-in date getter and setter 
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.CheckOutDate">
+            <summary>
+            The check-out date getter and setter
+            </summary>
+        </member>
+        <member name="P:HotelSystem.Reservation.ReservationPrice">
+            <summary>
+            The reservation price getter and setter
+            </summary>
+        </member>
         <member name="M:HotelSystem.Reservation.#ctor">
             <summary>
-            PArameterless reservation constructor that sets the id of reservation
+            The parameterless constructor of reservation that sets the reservationId.
             </summary>
         </member>
         <member name="M:HotelSystem.Reservation.#ctor(HotelSystem.Client,HotelSystem.HotelRoom,System.String,System.String)">
             <summary>
-            Parameter constructor that sets the reservation
+            The parameter constructor that sets the reservation data. 
             </summary>
             <param name="client">client</param>
             <param name="room">hotel room </param>
             <param name="checkInDate">string check in date</param>
             <param name="checkOutDate">string check out date</param>
         </member>
-        <member name="P:HotelSystem.Reservation.Client">
-            <summary>
-            Client that want to make reservation
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Reservation.ReservationId">
-            <summary>
-            Id of reservation (int)
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Reservation.CheckInDate">
-            <summary>
-            Check-in date of client visit in hotel (string) 
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Reservation.CheckOutDate">
-            <summary>
-            Check-out date of client visit in hotel (string)  
-            </summary>
-        </member>
-        <member name="P:HotelSystem.Reservation.ReservationPrice">
-            <summary>
-            Reservation price (double)
-            </summary>
-        </member>
         <member name="M:HotelSystem.Reservation.HowManyNights">
             <summary>
-            Method that counts for how many nights client will be in the hotel 
+            The method that counts for how many nights client will be in the hotel 
             </summary>
             <returns>int number of nights</returns>
         </member>
         <member name="M:HotelSystem.Reservation.Clone">
             <summary>
-            Clone method of the hotel room to object
+            The clone method of the hotel room to object
             </summary>
             <returns>object hotel room</returns>
         </member>
         <member name="M:HotelSystem.Reservation.ToString">
             <summary>
-            Overridden ToString method 
+            The overridden ToString method 
             </summary>
             <returns>string description of the reservation</returns>
         </member>

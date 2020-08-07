@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 namespace UnitTestHotelProject
 {
+    /// <summary>
+    /// Unit tests of the hotel class.
+    /// </summary>
     [TestClass]
     public class UnitTestHotel
     {
-
-
-
-
-
+        /// <summary>
+        ///The test of the parameter constructor of the hotel.
+        /// </summary>
         [TestMethod]
         public void TestHotelConstructor()
         {
@@ -22,16 +23,22 @@ namespace UnitTestHotelProject
             HotelRoom a2 = new HotelRoom("DOUBLE", "DoubleRoom1", 300.0);
             HotelRoom a3 = new HotelRoom("FAMILY", "FamilyRoom1", 500.0);
 
-            List<Client> clientList = new List<Client>();
-            clientList.Add(c1);
-            clientList.Add(c2);
+            List<Client> clientList = new List<Client>
+            {
+                c1,
+                c2
+            };
 
-            List<HotelRoom> roomList = new List<HotelRoom>();
-            roomList.Add(a1);
-            roomList.Add(a2);
-            roomList.Add(a3);
-            Hotel h = new Hotel(roomList);
-            h.ClientList = clientList;
+            List<HotelRoom> roomList = new List<HotelRoom>
+            {
+                a1,
+                a2,
+                a3
+            };
+            Hotel h = new Hotel(roomList)
+            {
+                ClientList = clientList
+            };
 
             for (int i = 0; i < 3; i++)
                 Assert.AreEqual(roomList[i], h.RoomList[i]);
@@ -41,6 +48,9 @@ namespace UnitTestHotelProject
             Assert.AreEqual(0, h.ReservationsNumber);
         }
 
+        /// <summary>
+        /// The test of the AddReservation method. 
+        /// </summary>
         [TestMethod]
         public void TestHotelAddReservation()
         {
@@ -51,16 +61,22 @@ namespace UnitTestHotelProject
             HotelRoom a2 = new HotelRoom("DOUBLE", "DoubleRoom1", 300.0);
             HotelRoom a3 = new HotelRoom("FAMILY", "FamilyRoom1", 500.0);
 
-            List<Client> clientList = new List<Client>();
-            clientList.Add(c1);
-            clientList.Add(c2);
+            List<Client> clientList = new List<Client>
+            {
+                c1,
+                c2
+            };
 
-            List<HotelRoom> roomList = new List<HotelRoom>();
-            roomList.Add(a1);
-            roomList.Add(a2);
-            roomList.Add(a3);
-            Hotel h = new Hotel(roomList);
-            h.ClientList = clientList;
+            List<HotelRoom> roomList = new List<HotelRoom>
+            {
+                a1,
+                a2,
+                a3
+            };
+            Hotel h = new Hotel(roomList)
+            {
+                ClientList = clientList
+            };
 
             Address address = new Address("Kraków", "30234");
             Client c = new Client("A", "L", "M", "15/03/1999", address, "yaay@onet.pl", "600000000");
@@ -68,10 +84,13 @@ namespace UnitTestHotelProject
             Reservation r1 = new Reservation(c2, a1, "22.01.2020", "23.01.2020");
             h.AddReservation(r);
             h.AddReservation(c2, a1, "22.01.2020", "23.01.2020");
-            Assert.AreEqual(h.ReservationList[0].ToString(), r.ToString());
-            Assert.AreEqual(h.ReservationList[1].ToString(), r1.ToString());
+            Assert.AreEqual(h.ReservationList[0].Client, r.Client);
+            Assert.AreEqual(h.ReservationList[0].Room, r.Room);
+            Assert.AreEqual(h.ReservationList[0].ReservationPrice, r.ReservationPrice);
 
-
+            Assert.AreEqual(h.ReservationList[1].Client, r1.Client);
+            Assert.AreEqual(h.ReservationList[1].Room, r1.Room);
+            Assert.AreEqual(h.ReservationList[1].ReservationPrice, r1.ReservationPrice);
         }
 
     }

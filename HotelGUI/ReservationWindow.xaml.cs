@@ -8,14 +8,22 @@ namespace HotelGUI
     /// </summary>
     public partial class ReservationWindow : Window
     {
-        private Hotel hotel;
-        private Reservation reservation;
+        private readonly Hotel hotel;
+        private readonly Reservation reservation;
 
+        /// <summary>
+        /// The constructor of the reservation window.
+        /// </summary>
         public ReservationWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The constructor of the reservation window that shows reservation made in MainWindow.
+        /// </summary>
+        /// <param name="reservation"></param>
+        /// <param name="hotel"></param>
         public ReservationWindow(HotelSystem.Reservation reservation, Hotel hotel) : this()
         {
             this.hotel = hotel;

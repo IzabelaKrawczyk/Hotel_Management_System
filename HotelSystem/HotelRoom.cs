@@ -2,38 +2,36 @@
 
 namespace HotelSystem
 {
-    [Serializable]
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom'
-#pragma warning disable CS1587 // XML comment is not placed on a valid language element
     ///<summary>
-    ///Class that represent the room of the hotel
+    ///The class that represent the room of the hotel.
     ///</summary>
+    [Serializable]
+
     public class HotelRoom : ICloneable
-#pragma warning restore CS1587 // XML comment is not placed on a valid language element
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom'
+
     {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.FAMILY'
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.SINGLE'
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.DOUBLE'
         /// <summary>
-        /// Different types of the hotel room
-        /// if it is a single, double, family room
+        /// The enumeration type that represents different types of the hotel room.
         /// </summary>
-        public enum RoomType { SINGLE, DOUBLE, FAMILY };
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.DOUBLE'
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.SINGLE'
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'HotelRoom.RoomType.FAMILY'
+        public enum RoomType 
+        { 
+            /// <summary>room for a person </summary>
+            SINGLE,
+            /// <summary>room for two people </summary>
+            DOUBLE,
+            /// <summary>room for a family </summary>
+            FAMILY
+        };
+
+        #region fields
         private RoomType roomType;
         private string name;
         private double price;
+        #endregion
 
-
+        #region properties
         /// <summary>
-        /// Name of the room
-        /// </summary>
-        public string Name { get => name; set => name = value; }
-        /// <summary>
-        /// Type of room
+        /// The type of room getter and setter.
         /// </summary>
         public string RoomType1
         {
@@ -49,8 +47,14 @@ namespace HotelSystem
                 else throw new ArgumentException("Wrong room type");
             }
         }
+
         /// <summary>
-        /// Price of the room of type double
+        /// The name of the room getter and setter.
+        /// </summary>
+        public string Name { get => name; set => name = value; }
+        
+        /// <summary>
+        /// The price of the room getter and setter.
         /// </summary>
         public double Price
         {
@@ -62,15 +66,18 @@ namespace HotelSystem
                 else throw new ArgumentException("Nothings for free!");
             }
         }
+        #endregion
 
+        #region constructors
         /// <summary>
-        /// Parameterless constructor of the room
+        /// The parameterless constructor of the HotelRoom
         /// </summary>
         public HotelRoom()
         {
         }
+
         /// <summary>
-        /// Constructor of the room
+        /// The parameter constructor of the HotelRoom
         /// </summary>
         /// <param name="roomType"> string</param>
         /// <param name="name">string</param>
@@ -81,21 +88,24 @@ namespace HotelSystem
             RoomType1 = roomType;
             Price = price;
         }
+        #endregion
+
         /// <summary>
-        /// Method that clones room to object
+        /// The method that clones room to object.
         /// </summary>
         /// <returns> object </returns>
         public object Clone()
         {
             return this.MemberwiseClone() as HotelRoom;
         }
+
         /// <summary>
-        /// Overridden ToString method 
+        /// The overridden ToString method. 
         /// </summary>
         /// <returns>string room description</returns>
         public override string ToString()
         {
-            string value = "Room: ";
+            string value = "";
             value += Name + " ";
             value += RoomType1 + " ";
             value += Price;

@@ -4,26 +4,24 @@ using System.Linq;
 
 namespace HotelSystem
 {
-    [Serializable]
-#pragma warning disable CS1587 // XML comment is not placed on a valid language element
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Client'
     ///<summary>
     ///Client class that represent the client of the hotel
     ///</summary>
+    [Serializable]
     public class Client : IEquatable<Client>, ICloneable
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Client'
-#pragma warning restore CS1587 // XML comment is not placed on a valid language element
     {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Client.Gender.M'
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Client.Gender.F'
         /// <summary>
         /// Types of gender of the client
         /// </summary>
-        public enum Gender { F, M };
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Client.Gender.F'
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Client.Gender.M'
+        public enum Gender 
+        { 
+            /// <summary> F means female, has int value 0 </summary>
+            F,
+            /// <summary> M means male, has int value 1 </summary>
+            M
+        };
 
-        #region properties
+        #region fields
         private string firstName;
         private string lastName;
         private Gender gender;
@@ -31,54 +29,39 @@ namespace HotelSystem
         private Address address;
         private string mailAddress;
         private string telNo;
-
-
-
         #endregion
-        /// <summary>
-        /// Last name of client
-        /// </summary>
-        public string LastName
-        {
-            get => lastName;
-            set
-            {
-                if (value.All(Char.IsLetter))
-                    lastName = value;
-                else throw new ArgumentException("Not valid last name!");
-            }
 
-        }
+        #region properties
         /// <summary>
-        /// First name of client
+        /// The first name getter and setter.
         /// </summary>
         public string FirstName
         {
             get => firstName;
             set
             {
-                if (value.All(Char.IsLetter))
+                if (value.All(Char.IsLetter) && value.Length > 0)
                     firstName = value;
                 else throw new ArgumentException("Not valid first name!");
             }
         }
-        /// <summary>
-        /// Date of birth of client
-        /// </summary>
-        public string DateOfBirth
-        {
-            get => dateOfBirth.ToString();
 
+        /// <summary>
+        /// The last name getter and setter.
+        /// </summary>
+        public string LastName
+        {
+            get => lastName;
             set
             {
-                DateTime d = DateTime.Parse(value);
-                if (Age(d) >= 18)
-                    dateOfBirth = d;
-                else throw new ArgumentException("Client to young to make a reservation.");
+                if (value.All(Char.IsLetter)&& value.Length > 0)
+                    lastName = value;
+                else throw new ArgumentException("Not valid last name!");
             }
         }
+
         /// <summary>
-        /// Client gender
+        /// The gender getter and setter.
         /// </summary>
         public string Gender1
         {
@@ -94,8 +77,30 @@ namespace HotelSystem
                 else throw new ArgumentException("Gender is only F or M.");
             }
         }
+
         /// <summary>
-        /// mail address of client 
+        /// The date of birth getter and setter.
+        /// </summary>
+        public string DateOfBirth
+        {
+            get => dateOfBirth.ToString();
+
+            set
+            {
+                DateTime d = DateTime.Parse(value);
+                if (Age(d) >= 18)
+                    dateOfBirth = d;
+                else throw new ArgumentException("Client to young to make a reservation.");
+            }
+        }
+
+        /// <summary>
+        ///The address getter and setter.
+        /// </summary>
+        public Address Address { get => address; set => address = value; }
+
+        /// <summary>
+        /// The mail address getter and setter.
         /// </summary>
         public string MailAddress
         {
@@ -108,8 +113,9 @@ namespace HotelSystem
             }
 
         }
+
         /// <summary>
-        /// Telephone number of client
+        /// The telephone number getter and setter.
         /// </summary>
         public string TelNo
         {
@@ -121,11 +127,7 @@ namespace HotelSystem
                 else throw new ArgumentException("Wrong telephone number");
             }
         }
-        /// <summary>
-        /// Address of the client
-        /// </summary>
-        public Address Address { get => address; set => address = value; }
-
+        #endregion
 
         #region constructors
         /// <summary>
@@ -162,19 +164,20 @@ namespace HotelSystem
 
         #endregion
 
-
+        #region methods
         /// <summary>
         /// Method that counts the age of client
         /// </summary>
         /// <param name="date"> DateTime</param>
         /// <returns>int age </returns>
-        public int Age(DateTime date)
+        public static int Age(DateTime date)
         {
             int age = DateTime.Now.Year - date.Year;
             if (DateTime.Now.DayOfYear < date.DayOfYear)
-                age = age - 1;
+                age -= 1;
             return age;
         }
+
         /// <summary>
         /// Overridden ToString method
         /// </summary>
@@ -183,6 +186,7 @@ namespace HotelSystem
         {
             return "Client: " + FirstName + " " + LastName + " " + DateOfBirth + " " + Gender1 + " " + MailAddress + " " + TelNo;
         }
+
         /// <summary>
         /// Method equals that checks if this client is equal to other client 
         /// </summary>
@@ -194,6 +198,7 @@ namespace HotelSystem
                 return false;
             return this.FirstName == other.FirstName && this.LastName == other.LastName && this.DateOfBirth == other.DateOfBirth && this.Gender1 == other.Gender1 && this.Address == other.Address;
         }
+
         /// <summary>
         /// Clone method of client
         /// </summary>
@@ -202,7 +207,6 @@ namespace HotelSystem
         {
             return this.MemberwiseClone() as Client;
         }
+        #endregion
     }
-
-
 }

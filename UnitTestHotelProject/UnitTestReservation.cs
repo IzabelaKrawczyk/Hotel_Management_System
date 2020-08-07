@@ -4,16 +4,15 @@ using System;
 
 namespace UnitTestHotelProject
 {
+    /// <summary>
+    /// Unit tests of the class Reservation
+    /// </summary>
     [TestClass]
     public class UnitTestReservation
     {
-        [TestMethod]
-        public void TestReservationcConstructor()
-        {
-            Reservation r = new Reservation();
-            Assert.AreEqual(1001, r.ReservationId);
-        }
-
+        /// <summary>
+        /// The test of the Reservation parameter constructor.
+        /// </summary>
         [TestMethod]
         public void TestReservationcParameterConstructor()
         {
@@ -27,21 +26,26 @@ namespace UnitTestHotelProject
             Assert.AreEqual(DateTime.Parse("25.01.2020"), DateTime.Parse(r.CheckOutDate));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestReservationWrongCheckInDate()
-        {
-            Reservation r = new Reservation();
-            r.CheckInDate = "19/01/2020";
-        }
+        //[TestMethod]
+        //[ExpectedException(typeof(ArgumentException))]
+        //public void TestReservationWrongCheckInDate()
+        //{
+        //    Reservation r = new Reservation();
+        //    r.CheckInDate = "19/01/2020";
+        //}
 
+        /// <summary>
+        /// The test of the checkOutDate setter that throws ArgumentException when the value is earlier than checkInDate. 
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestReservationWrongCheckOutDate()
         {
-            Reservation r = new Reservation();
-            r.CheckInDate = "21/01/2020";
-            r.CheckOutDate = "17/01/2020";
+            _ = new Reservation
+            {
+                CheckInDate = "21/01/2020",
+                CheckOutDate = "17/01/2020"
+            };
         }
 
     }

@@ -22,3 +22,7 @@ C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.csproj.CopyComplete
 C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.exe
 C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.pdb
 C:\Users\Izabela\source\repos\HotelGUI\bin\Debug\HotelGUI.xml
+C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.csproj.CoreCompileInputs.cache
+C:\Users\Izabela\source\repos\HotelGUI\bin\Debug\HotelReservationDatabase.accdb
+C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI_Content.g.cs
+C:\Users\Izabela\source\repos\HotelGUI\obj\Debug\HotelGUI.HotelDatabase.resources

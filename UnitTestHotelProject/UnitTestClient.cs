@@ -4,9 +4,15 @@ using System;
 
 namespace UnitTestHotelProject
 {
+    /// <summary>
+    /// Tests of the class client
+    /// </summary>
     [TestClass]
     public class ClientUnitTest
-    {
+    {   
+        /// <summary>
+        /// The test of the parameter constructor of the client class
+        /// </summary>
         [TestMethod]
         public void TestClientConstructorParameter()
         {
@@ -22,52 +28,82 @@ namespace UnitTestHotelProject
 
         }
 
+        /// <summary>
+        /// The test of the telephone number setter, that throws AgrumentException when variable hasn't only digits.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestClientWrongTelNo()
         {
-            Client c = new Client();
-            c.TelNo = "ala";
+            _ = new Client
+            {
+                TelNo = "ala"
+            };
         }
 
+        /// <summary>
+        /// The test of the dateOfBirth setter, that throws ArgumentException when client isn't 18.
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestClientWrongDateOFBirth()
         {
-            Client c = new Client();
-            c.DateOfBirth = "19.01.2020";
+            _ = new Client
+            {
+                DateOfBirth = "19.01.2020"
+            };
         }
 
+        /// <summary>
+        /// The test of the firstName setter, that throws ArgumentException when value hasn't only letters. 
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestClientWrongFirstName()
         {
-            Client c = new Client();
-            c.FirstName = "12938024";
+            _ = new Client
+            {
+                FirstName = "12938024"
+            };
         }
 
+        /// <summary>
+        /// The test of the lastName setter, that throws ArgumentException when value hasn't only letters. 
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestClientWrongLastName()
         {
-            Client c = new Client();
-            c.LastName = "JJ2435";
+            _ = new Client
+            {
+                LastName = "JJ2435"
+            };
         }
 
+        /// <summary>
+        /// The test of the gender setter, that throws ArgumentException when value is not "F" or "M".
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestClientWrongGender()
         {
-            Client c = new Client();
-            c.Gender1 = "K";
+            _ = new Client
+            {
+                Gender1 = "K"
+            };
         }
 
+        /// <summary>
+        /// The test of the emailAddress setter that throws FormatException when value has wrong format. 
+        /// </summary>
         [TestMethod]
         [ExpectedException(typeof(FormatException))]
         public void TestClientWrongmailAddress()
         {
-            Client c = new Client();
-            c.MailAddress = "test.pl";
+            _ = new Client
+            {
+                MailAddress = "test.pl"
+            };
         }
 
     }
