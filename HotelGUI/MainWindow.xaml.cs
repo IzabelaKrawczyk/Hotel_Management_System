@@ -197,10 +197,11 @@ namespace HotelGUI
 
         }
 
+        /*
         private void MenuDatabase_Clik(object sender, RoutedEventArgs e)
         {
-            HotelDatabase okno = new HotelDatabase();
-            okno.ShowDialog();
-        }
+            HotelDatabase window = new HotelDatabase();
+            window.ShowDialog();
+        }*/
     }
 }

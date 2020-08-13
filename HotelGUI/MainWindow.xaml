@@ -60,7 +60,7 @@
                 <MenuItem Header="_Menu File" Height="22" Width="165">
                     <MenuItem Header="_Open" Click="MenuOpen_Click"/>
                     <MenuItem Header="_Save" Click="MenuSave_Click"/>
-                    <MenuItem Header="_Database" Click="MenuDatabase_Clik"/>
+                    <!--<MenuItem Header="_Database" Click="MenuDatabase_Clik"/>-->
                 </MenuItem>
             </Menu>
             <StackPanel Width="260" Margin="0,-22,0,0"/>
