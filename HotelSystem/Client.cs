@@ -95,11 +95,6 @@ namespace HotelSystem
         }
 
         /// <summary>
-        ///The address getter and setter.
-        /// </summary>
-        public Address Address { get => address; set => address = value; }
-
-        /// <summary>
         /// The mail address getter and setter.
         /// </summary>
         public string MailAddress

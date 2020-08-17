@@ -12,7 +12,7 @@ namespace HotelSystem
     /// Class that represents the hotel object.
     /// </summary>
     [Serializable]
-    public class Hotel : ICloneable, ISaving
+    public class Hotel : ICloneable
     {
         #region fields
         private int reservationsNumber;
@@ -29,24 +29,17 @@ namespace HotelSystem
         public int ReservationsNumber { get => reservationsNumber; }
 
         /// <summary>
-        /// The clientList getter and setter. 
-        /// </summary>
-        public List<Client> ClientList { get => clientList; set => clientList = value; }
-
-        /// <summary>
-        /// The roomList getter and setter. 
-        /// </summary>
-        public List<HotelRoom> RoomList { get => roomList; set => roomList = value; }
-
-        /// <summary>
-        /// The reservationList getter and setter.
-        /// </summary>
-        public List<Reservation> ReservationList { get => reservationList; set => reservationList = value; }
-
-        /// <summary>
         /// The roomNumber getter and private setter.
         /// </summary>
         public int RoomsNumber { get => roomsNumber; set => roomsNumber = value; }
+
+        internal ISaving ISaving
+        {
+            get => default;
+            set
+            {
+            }
+        }
         #endregion
 
         #region constructors

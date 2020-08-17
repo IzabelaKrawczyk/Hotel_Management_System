@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HotelSystem.Address">
+    <Position X="0.5" Y="1" Width="2" />
+    <Members>
+      <Property Name="City" Hidden="true" />
+      <Property Name="FlatNumber" Hidden="true" />
+      <Property Name="PostalCode" Hidden="true" />
+      <Property Name="Street1" Hidden="true" />
+      <Property Name="StreetNumber1" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAACAAAMIAAACCAAAEQAAgAAAAAIAAAAAAA=</HashCode>
+      <FileName>Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HotelSystem.Client">
+    <Position X="4" Y="0.5" Width="2" />
+    <Members>
+      <Property Name="DateOfBirth" Hidden="true" />
+      <Property Name="FirstName" Hidden="true" />
+      <Property Name="Gender1" Hidden="true" />
+      <Property Name="LastName" Hidden="true" />
+      <Property Name="MailAddress" Hidden="true" />
+      <Property Name="TelNo" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="HotelSystem.Client.Gender" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Client.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAAAAEAAQABAAAEEgEAAgIAAQAIQAAAAAAAACAAAABg=</HashCode>
+      <FileName>Client.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="address" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelSystem.Hotel">
+    <Position X="3.75" Y="7" Width="2.5" />
+    <Members>
+      <Property Name="ReservationsNumber" Hidden="true" />
+      <Property Name="RoomsNumber" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAQIAADAAAAAGIwEAAAABAKAIAgAABAGAEgAAABA=</HashCode>
+      <FileName>Hotel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ISaving" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="clientList" />
+      <Field Name="reservationList" />
+      <Field Name="roomList" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelSystem.HotelRoom">
+    <Position X="7.25" Y="7.5" Width="2.25" />
+    <Members>
+      <Property Name="Name" Hidden="true" />
+      <Property Name="Price" Hidden="true" />
+      <Property Name="RoomType1" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="HotelSystem.HotelRoom.RoomType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>HotelRoom.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAQAAAAAEAAAAAAQAAAAEAAAAAAAAAAAAAhA=</HashCode>
+      <FileName>HotelRoom.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HotelSystem.Reservation">
+    <Position X="7" Y="2.75" Width="2.25" />
+    <Members>
+      <Property Name="CheckInDate" Hidden="true" />
+      <Property Name="CheckOutDate" Hidden="true" />
+      <Property Name="ReservationId" Hidden="true" />
+      <Property Name="ReservationPrice" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAEAAAABAAAEAHAAAAAQAgAAAAIAAAAARAAAAFA=</HashCode>
+      <FileName>Reservation.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="client" />
+      <Field Name="room" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="HotelSystem.ISaving">
+    <Position X="0.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISaving.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9.75" />
+</ClassDiagram>

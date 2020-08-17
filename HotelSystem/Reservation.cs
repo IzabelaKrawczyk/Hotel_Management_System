@@ -33,16 +33,6 @@ namespace HotelSystem
         public int ReservationId { get => reservationId; set => reservationId = value; }
 
         /// <summary>
-        /// The client getter and setter.
-        /// </summary>
-        public Client Client { get => client; set => client = value; }
-
-        /// <summary>
-        /// The room getter and setter.
-        /// </summary>
-        public HotelRoom Room { get => room; set => room = value; }
-
-        /// <summary>
         /// The check-in date getter and setter 
         /// </summary>
         public string CheckInDate
